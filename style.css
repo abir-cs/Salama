@@ -1,0 +1,54 @@
+@font-face {
+  font-family: "Alice";
+  src: url("assets/fonts/Alice-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Alice", sans-serif;
+  margin: 0;
+  font-size: 18px;
+}
+nav{
+  position: fixed;
+  display: flex;
+  width: 95%;
+  justify-content: space-between;
+  align-content: center;
+  padding: 20px;
+}
+.links{
+  display: flex;
+}
+a{
+  margin:0 5px;
+  text-decoration: none;
+  color: white;
+  align-self: center;
+}
+.home{
+  display: flex;
+  height: 700px;
+  width: 100%;
+  background-image: url("assets/images/pexels-pixabay-269077.jpg");
+  background-position: left top;
+  background-repeat: no-repeat, repeat;
+  background-size: 100% 100%;
+
+}
+.welcome {
+  width: 450px;
+    margin: auto;
+    font-size: 2em;
+    background-color:white;
+    text-align: center;
+    color :#3D4748;
+    padding-bottom: 20px;
+    border:2px dashed #3D4748;
+    border-radius: 5px;
+    span{
+      font-weight: bold;
+    }
+    
+}
