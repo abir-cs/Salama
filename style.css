@@ -4,19 +4,24 @@
   font-weight: normal;
   font-style: normal;
 }
-
+*{
+    font-family: "Alice", sans-serif;
+}
 body {
-  font-family: "Alice", sans-serif;
   margin: 0;
   font-size: 18px;
+  color :#3D4748;
 }
 nav{
   position: fixed;
   display: flex;
-  width: 95%;
+  width:  100%;
+  box-sizing: border-box;
   justify-content: space-between;
   align-content: center;
   padding: 20px;
+  background-color: rgba(61, 71, 72, 0);
+  transition: background-color 0.3s ease;
 }
 .links{
   display: flex;
@@ -27,8 +32,18 @@ a{
   color: white;
   align-self: center;
 }
+a:hover{
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0.344);
+  border-radius: 3px;
+  padding: 5px;
+}
+/* home page --------------------------------------------------- */
 .home{
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
   height: 700px;
   width: 100%;
   background-image: url("assets/images/pexels-pixabay-269077.jpg");
@@ -39,16 +54,72 @@ a{
 }
 .welcome {
   width: 450px;
-    margin: auto;
-    font-size: 2em;
-    background-color:white;
-    text-align: center;
-    color :#3D4748;
-    padding-bottom: 20px;
-    border:2px dashed #3D4748;
-    border-radius: 5px;
-    span{
-      font-weight: bold;
-    }
+  font-size: 2em;
+  background-color:white;
+  text-align: center;
+  padding-bottom: 20px;
+  border:2px dashed #3D4748;
+  border-radius: 5px;
+  span{
+    font-weight: bold;
+  }
     
+}
+.mission{
+  background-color: #3d4748b9;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  border:2px solid #3D4748;
+  border-radius: 5px;
+
+}
+.services, .experience{
+  padding: 15px;
+}
+.slider{
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 5px;
+  scrollbar-width: 10px; /* Firefox */
+}
+.service, .review{
+  flex: 0 0 auto;
+  text-align: center;
+}
+.service img {
+  object-fit: cover;
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+}
+.service p{
+  width: fit-content;
+  margin: auto;
+  font-size: 15px;
+}
+.review {
+  background-color: #9D998E;
+  width: 300px;
+  text-align: left;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: white;
+  h3{
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+  }
+}
+button{
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: #579ad0;
+  color: white;
+  border: 2px solid #9D998E;
+  border-radius: 5px;
+}
+button:hover{
+  background-color: #36678f;
 }
