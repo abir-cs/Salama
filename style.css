@@ -38,6 +38,7 @@ a:hover{
   border-radius: 3px;
   padding: 5px;
 }
+
 /* home page --------------------------------------------------- */
 .home{
   display: flex;
@@ -82,7 +83,7 @@ a:hover{
   overflow-x: auto;
   scroll-behavior: smooth;
   gap: 5px;
-  scrollbar-width: 10px; /* Firefox */
+  scrollbar-width: 10px;
 }
 .service, .review{
   flex: 0 0 auto;
@@ -122,4 +123,37 @@ button{
 }
 button:hover{
   background-color: #36678f;
+}
+.form1{
+  box-shadow: 0 0 50px rgb(0, 0, 0);
+  width: 700px;
+  height: 500px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: fixed;
+  top :50%;
+  left:50%;
+  transform :translate(-50% ,-50%);
+}
+.buttons{
+  display: flex;
+  justify-content: center;
+  button{
+    margin: 10px;
+  }
+}
+input,textarea{
+  height: 30px;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 18px;
+  color :#3D4748;
+  border: 1px solid #36678f;
+}
+.hide{
+  display: none;
 }

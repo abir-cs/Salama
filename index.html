@@ -72,9 +72,22 @@
         <div class="slider reviews">
 
         </div>
-        <button>Add Yours</button>
+        <button class="add">Add Yours</button>
     </div>
+    <form id="reviewForm" class="form1 hide">
+        <label for="name">first name</label>
+        <input type="text" id="name" required/>
+        <label for="Lname">last name</label>
+        <input type="text" id="Lname" required>
+        <label for="experience">your experience in the clinic :</label>
+        <textarea id="experience" required></textarea>
+        <div class="buttons">
+            <button type="submit">add</button>
+            <button type="button" class="close">close</button>
+        </div>
+    </form>
     
-    <script src="script.js"></script>
+    <script src="script.js" ></script>
+
 </body>
 </html>
