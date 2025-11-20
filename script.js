@@ -5,6 +5,10 @@ const getReviews = async () => {
   const res = await axios.get("/docs/experiences.json");
   return res.data.experiences;
 };
+$(window).on("scroll", function () {
+  let opacity = Math.min($(this).scrollTop() / 300, 1);
+  $("nav").css("background-color", `rgba(61, 71, 72,${opacity})`);
+});
 
 window.onload = async () => {
   exps = await getReviews(); 
@@ -18,12 +22,6 @@ window.onload = async () => {
     `);
   });
 };
-
-$(window).on("scroll", function () {
-  let opacity = Math.min($(this).scrollTop() / 300, 1);
-  $("nav").css("background-color", `rgba(61, 71, 72,${opacity})`);
-});
-
 
 $(".add").click(() => {
   $(".form1").removeClass("hide");

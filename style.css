@@ -23,6 +23,10 @@ nav{
   background-color: rgba(61, 71, 72, 0);
   transition: background-color 0.3s ease;
 }
+.footer{
+  background-color: #3D4748;
+  padding: 50px;
+}
 .links{
   display: flex;
 }
@@ -94,6 +98,8 @@ a:hover{
   width: 250px;
   height: 250px;
   border-radius: 10px;
+  transition: transform 0.5s ease; 
+  transform-origin: center;
 }
 .service p{
   width: fit-content;
@@ -156,4 +162,52 @@ input,textarea{
 }
 .hide{
   display: none;
+}
+.appointment{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin: 20px auto;
+  height: 600px;
+  width: 800px;
+  border-radius: 5px;
+  background-image: url("assets/images/pexels-pixabay-162583.jpg");
+  background-position: left top;
+  background-repeat: no-repeat, repeat;
+  background-size: 100% 100%;
+  div{
+    background-color: rgb(239, 240, 242);
+    margin: 0 20px;
+    height: fit-content;
+    border: 2px solid #36678f;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 2px 2px 10px rgb(0, 0, 0);
+  }
+  a{
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    padding: 10px;
+    background-color: #579ad0;
+    color: white;
+    border: 2px solid #9D998E;
+    border-radius: 5px;
+  }
+}
+
+table{
+  margin: auto;
+  color: white;
+  text-align: center;
+  border: 1px solid white;
+  border-collapse: collapse;
+  td{
+    padding: 10px;
+    border: 1px solid white;
+  }
+}
+/* -------animations---------------------- */
+.service:hover img {
+    transform: scale(1.2); 
 }
