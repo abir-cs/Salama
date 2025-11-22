@@ -64,7 +64,7 @@ a:hover{
   background-color:white;
   text-align: center;
   padding-bottom: 20px;
-  border:2px dashed #3D4748;
+  border:3px solid #3D4748;
   border-radius: 5px;
   span{
     font-weight: bold;
