@@ -4,10 +4,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="form.css">
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <title>Salama/appointment</title>
 </head>
 <body>
-    <script src="script.js"></script>
+    <nav>
+        <img src="assets/images/Group 2.png" alt="logo" width="250">
+        <div class="links">
+            <a href="about.html">about</a>
+            <a href="services.html">services</a>
+            <a href="appointment.html">appointment</a>
+            <a href="contact.html">contact</a>
+        </div>
+    </nav> 
+    <form action="" class="appointment">
+        <label for="Fname">First name</label>
+        <input type="text"  id="Fname">
+        <label for="Lname">Last name</label>
+        <input type="text" id="Lname">
+        <label for="birthday">Birthday</label>
+        <input 
+        type="date" 
+        id="birthday" 
+        name="birthday"
+        >
+        <label for="gender">Gender</label>
+        <div>
+            <input type="radio" id="m" name="gender" value="male"> 
+            <label for="m">male</label>
+        </div>
+        <div>
+            <input type="radio" id="f" name="gender" value="female"> 
+            <label for="f">female</label>
+        </div>
+
+        <label for="service"></label>
+        <select name="" id="service">
+            <option value="general">general consultation</option>
+            <option value="pediatric">pediatric consultation</option>
+            <option value="dental">dental checkup</option>
+            <option value="physiotherapy">physiotherapy session</option>
+            <option value="vaccination">vaccination</option>
+            <option value="labtest">lab test</option>
+            <option value="followup">follow-up appointment</option>
+            <option value="special">special consultation</option>
+        </select>
+        <label for="date">Preferred date</label>
+        <input 
+        type="date" 
+        id="date" 
+        name="date" 
+        >
+        <label for="appt"> Preferred time</label>
+        <input 
+        type="time" 
+        id="appt" 
+        name="appt"
+        min="09:00"
+        max="17:00"
+        step="900"   
+        >
+
+        <label for="email">Email</label>
+        <input type="email" id="email">
+        <label for="phone">Phone number</label>
+        <input type="number" id="phone">
+        <label for="add">Address</label>
+        <input type="text" id="add">
+        <label for="MH">Medical history</label>
+        <textarea name="" id="MH" placeholder="write here any allergies, chronic diseases or past experiences worth mentioning "></textarea>
+        <label for="doctor">Select a specific doctor</label>
+        <select id="doctor">
+            <option value="any">Any would do</option>
+        </select>
+        <button>submit</button>
+    </form>
+
+    <div class="footer">
+        <table>
+            <tr>
+                <td>clinic address</td>
+                <td colspan="2">somewhere</td>
+            </tr>
+            <tr>
+                <td>emergency hotline</td>
+                <td colspan="2">0565889852</td>
+            </tr>
+            <tr>
+                <td>email</td>
+                <td colspan="2">salama.clinic@gmail.com</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>abir</td>
+                <td>racha</td>
+            </tr>
+            <tr>
+               <td>instagram</td>
+               <td><a href="https://www.instagram.com/6lackrosess/#">6lackrosess</a></td>
+               <td><a href="https://www.instagram.com/duckyduckdog/#">duckyduckgo</a></td>
+            </tr>
+            <tr>
+                <td>Linked in</td>
+                <td><a href="https://www.linkedin.com/in/abir-belhadef-541589387">abir belhadef</a></td>
+                <td><a href="https://www.linkedin.com/in/racha-amouri-b5081638b">racha amouri</a></td>
+            </tr>
+            <tr>
+                <td>Gmail</td>
+                <td>abir.belhadef@univ-constantine2.dz</td>
+                <td>racha.amouri@univ-constantine2.dz</td>
+            </tr>
+
+        </table>
+    </div>
+    <script >     
+        $("#birthday").max = new Date().toISOString().split("T")[0];
+        $("#date").max = new Date().toISOString().split("T")[0];
+    </script>
 </body>
 </html>

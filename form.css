@@ -1,0 +1,23 @@
+
+nav{
+    background-color: #3D4748;
+    top:0;
+}
+form{
+    border: 1px solid #9D998E;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    max-width:  800px;
+    margin: 120px auto;
+    padding: 20px;
+    input,label{
+        vertical-align: middle;
+    }
+    input,textarea,select{
+        text-align: center;
+    }
+    *{
+        margin-bottom: 10px;
+    }
+}
