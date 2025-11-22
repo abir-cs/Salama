@@ -3,13 +3,17 @@ nav{
     background-color: #3D4748;
     top:0;
 }
+h1{
+    margin-top: 120px;
+    text-align: center;
+}
 form{
     border: 1px solid #9D998E;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     max-width:  800px;
-    margin: 120px auto;
+    margin: 20px auto;
     padding: 20px;
     input,label{
         vertical-align: middle;
