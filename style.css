@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Alice";
-  src: url("assets/fonts/Alice-Regular.ttf") format("truetype");
+  src: url("assets/fonts/Alata-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -72,10 +72,10 @@ a:hover{
 .welcome {
   width: 450px;
   font-size: 2em;
-  background-color:white;
+  background-color:rgba(255, 255, 255, 0.95);
   text-align: center;
   padding-bottom: 20px;
-  border:3px solid #3D4748;
+  border:2px solid #3D4748;
   border-radius: 5px;
   span{
     font-weight: bold;
@@ -98,6 +98,9 @@ a:hover{
   scroll-behavior: smooth;
   gap: 5px;
   scrollbar-width: 10px;
+}
+.reviews::-webkit-scrollbar{
+  display: none;
 }
 .service, .review{
   flex: 0 0 auto;
@@ -137,6 +140,11 @@ button{
   border: 2px solid #9D998E;
   border-radius: 5px;
 }
+.add{
+  border-radius: 20px;
+  background-color: #3D4748;
+
+}
 button:hover{
   background-color: #36678f;
 }
@@ -162,13 +170,19 @@ button:hover{
     margin: 10px;
   }
 }
-input,textarea{
+input,textarea,select{
   height: 30px;
   border-radius: 5px;
   padding: 5px;
   font-size: 18px;
   color :#3D4748;
   border: 1px solid #36678f;
+}
+input:focus,textarea:focus,select:focus{
+  outline:1.5px solid #36678f;
+}
+select{
+  height: 50px;
 }
 .hide{
   display: none;
@@ -238,9 +252,9 @@ table{
 }
 /* img animation */
 .fade-slide {
-  opacity: 0;          /* start invisible */
-  position: relative;  /* allow top movement */
-  top: 50px;           /* start slightly lower */
+  opacity: 0;      
+  position: relative;  
+  top: 50px;           
 }
 .firstext{
   text-align: center;

@@ -7,7 +7,12 @@ h1{
     margin-top: 120px;
     text-align: center;
 }
+body{
+    background-image: linear-gradient(to right, #f3fcf1, white);
+}
 form{
+    background-image: linear-gradient(to left,#f3fcf1, white);
+    background-color: white;
     border: 1px solid #9D998E;
     border-radius: 5px;
     display: flex;
