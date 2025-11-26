@@ -79,8 +79,7 @@ a:hover{
   border-radius: 5px;
   span{
     font-weight: bold;
-  }
-    
+  } 
 }
 .mission{
   background-color: #3d4748b9;
@@ -89,7 +88,6 @@ a:hover{
   margin: 10px;
   border:2px solid #3D4748;
   border-radius: 5px;
-
 }
 .services, .experience{
   padding: 15px;
@@ -164,7 +162,7 @@ button:hover{
     margin: 10px;
   }
 }
-input,textarea,select{
+input,textarea{
   height: 30px;
   border-radius: 5px;
   padding: 5px;
@@ -175,7 +173,7 @@ input,textarea,select{
 .hide{
   display: none;
 }
-.appointmentbutton{
+.appointment{
   display: flex;
   justify-content: end;
   align-items: center;
@@ -222,35 +220,58 @@ table{
 /* -------animations---------------------- */
 .service:hover img {
     transform: scale(1.2); 
-}/* about page --------------------------------------------------- */
+}
+/* about page --------------------------------------------------- */
 .about{
-  min-width: 1200px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   padding-top: 90px;
   width: 100%;
+  padding-bottom: 40px;
 }
 .abtimg{
-  height: 400px;
+  height: 380px;
   width: auto;
   transition: height 0.2s;
 }
+/* img animation */
+.fade-slide {
+  opacity: 0;          /* start invisible */
+  position: relative;  /* allow top movement */
+  top: 50px;           /* start slightly lower */
+}
+.firstext{
+  text-align: center;
+  width: 90%;
+  border: 5px dotted #36678f;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 40px 20px 60px 20px;
+}
 .abtsection{
   display: flex;
-  gap: 20px;
   padding-right: 50px;
   padding-left: 50px;
+}
+.abtsections{
+  margin-bottom: 70px;
 }
 .abtp{
   font-size: 20px;
 }
 .sectext{
   margin-top: 100px;
+  width: 500px;
+}
+/* img animation */
+.fade-text {
+  opacity: 0;
 }
 .doctors{
   width: 100%;
+  margin-bottom: 40px;
 }
 .doctor{ 
   display:flex;
@@ -287,7 +308,6 @@ table{
 }
 /* contact page --------------------------------------------------- */
 .contact{
-  min-width: 1200px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -312,4 +332,45 @@ table{
   width: 350px;
   height: 350px;
   border-radius: 10px;
+}
+/* --------services------------------------------------------------------- */
+.serv{
+  display: flex;
+  flex-direction: column;
+  padding-top: 90px;
+  align-items: center;
+}
+.Services{
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+.Service{
+  width: 300px;
+  height: 200px;
+  border: 1px solid #3D4748;
+  border-radius: 10px;
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+}
+.Service img{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.Service h3{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #3D4748;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: white;
 }
