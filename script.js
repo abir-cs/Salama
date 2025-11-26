@@ -85,12 +85,14 @@ $('.Service').hover(function(){
     'width':'110%',
     'height':'220px'
   },300);
+  $(this).find('h3').css('color', '#36678f');
   
 },function(){
   $(this).find('img').stop().animate({
     'width':'100%',
     'height':'200px'
   },300);
+  $(this).find('h3').css('color', '#3D4748');
 });
 const swiper = new Swiper('.swiper', {
       slidesPerView: 3,
