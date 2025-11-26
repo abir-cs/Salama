@@ -287,19 +287,17 @@ table{
 }
 /* contact page --------------------------------------------------- */
 .contact{
-  min-width: 1200px;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding-top: 90px;
-  width: 100%;
 }
 .contacts{
   display: flex;
   flex-direction: column;
   border:1px solid #3D4748;
-  padding: 10px;
+  padding: 20px;
   margin-bottom: 30px;
   width: 500px;
   border-radius: 10px;
@@ -312,4 +310,36 @@ table{
   width: 350px;
   height: 350px;
   border-radius: 10px;
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+/* ------------------responsive design --------------------- */
+@media screen and (max-width :1000px){
+  .cntctmap{
+    flex-direction: column;
+    gap: 0;
+  }
+}
+@media screen and (max-width: 700px){
+  body{
+    
+  }
+  nav{
+    img{
+      width: 100px;
+    }
+    flex-direction: column;
+   align-items: center;
+  }
+  .home{
+    height: 600px;
+  }
+  .welcome{
+    width: 300px;
+    font-size: 18px;
+    img{
+      width: 180px;
+    }
+  }
 }
