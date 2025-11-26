@@ -59,27 +59,40 @@ $("#reviewForm").on("submit", function (e) {
     .catch(err => console.error(err));
 });
 
-$(window).on("scroll",function(){
-  let pos = $(window).scrollTop();
-  let size = 380 + pos * 0.2;
-  const sec = document.querySelector('.abtsection');
-  const height = sec.offsetHeight;
-  if(pos>=0 && pos<height){
-    size = 380 + pos * 0.3;
-    if (size>400) size = 400;
-    if (size<380) size = 380;
-    $("#img1").css("height",size+"px");
-  }else if(pos>=height && pos<height*2){
-    size = 380 + (pos-height) * 0.3;
-    if (size>400) size = 400;
-    if (size<380) size = 380;
-    $("#img2").css("height",size+"px");
-  }else if(pos>=height*2 && pos<height*3){
-    size = 380 + (pos-height*2) * 0.3;
-    if (size>400) size = 400;
-    if (size<380) size = 380;
-    $("#img3").css("height",size+"px");
-  }
+$(window).on('scroll', function() {
+  const windowBottom = $(window).scrollTop() + $(window).height(); // bottom of viewport
+
+  $('.fade-slide').each(function() {
+    const imgTop = $(this).offset().top; // distance from top of page
+
+    // Check if image is entering the viewport
+    if (windowBottom > imgTop + 50 && !$(this).hasClass('animated')) {
+      $(this).addClass('animated'); // mark image so it animates only once
+
+      // Animate opacity and position simultaneously
+      $(this).animate({
+        opacity: 1, // fade in
+        top: 0      // slide up to original position
+      }, 1000);     // duration: 1 second
+      $(this).parent().find('.fade-text').delay(150).animate({
+        opacity: 1, // fade in
+      },600);
+    }
+  });
+});
+$('.Service').hover(function(){
+  $(this).find('img').stop().animate({
+    'width':'110%',
+    'height':'220px'
+  },300);
+  $(this).find('h3').css('color', '#36678f');
+  
+},function(){
+  $(this).find('img').stop().animate({
+    'width':'100%',
+    'height':'200px'
+  },300);
+  $(this).find('h3').css('color', '#3D4748');
 });
 const swiper = new Swiper('.swiper', {
       slidesPerView: 3,
@@ -88,7 +101,12 @@ const swiper = new Swiper('.swiper', {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
-        loop: true
+        scrollbar: {
+          el: '.swiper-scrollbar',
+          draggable: true,
+        },
+        mousewheel: true,
+        loop: true,    
 });
 function initMap(){
   const location = {lat:37.38322999945196,lng: 2.040267971827429};
