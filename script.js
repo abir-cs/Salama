@@ -11,7 +11,7 @@ const getReviews = async () => {
 // });
 
 window.onload = async () => {
-  exps = await getReviews(); 
+  exps = await getReviews();
 
   exps.forEach(e => {
     $(".reviews").append(`
@@ -31,8 +31,8 @@ $(".add").click(() => {
   $(".form1").removeClass("hide");
 });
 $(".close").click(() => {
-    $("#reviewForm")[0].reset();
-    $(".form1").addClass("hide");
+  $("#reviewForm")[0].reset();
+  $(".form1").addClass("hide");
 });
 $("#reviewForm").on("submit", function (e) {
   e.preventDefault();
@@ -59,10 +59,10 @@ $("#reviewForm").on("submit", function (e) {
     .catch(err => console.error(err));
 });
 
-$(window).on('scroll', function() {
+$(window).on('scroll', function () {
   const windowBottom = $(window).scrollTop() + $(window).height(); // bottom of viewport
 
-  $('.fade-slide').each(function() {
+  $('.fade-slide').each(function () {
     const imgTop = $(this).offset().top; // distance from top of page
 
     // Check if image is entering the viewport
@@ -76,41 +76,55 @@ $(window).on('scroll', function() {
       }, 1000);     // duration: 1 second
       $(this).parent().find('.fade-text').delay(150).animate({
         opacity: 1, // fade in
-      },600);
+      }, 600);
+
     }
   });
 });
-$('.Service').hover(function(){
+$('.Service').hover(function () {
   $(this).find('img').stop().animate({
-    'width':'110%',
-    'height':'220px'
-  },300);
+    'width': '110%',
+    'height': '220px'
+  }, 300);
+  $(this).find('.overlay').stop().animate({
+    'height': '70%'
+  }, 300)
+  $(this).find('p').stop().animate({
+    'top': '0%'
+  }, 300)
+
   $(this).find('h3').css('color', '#36678f');
-  
-},function(){
+
+}, function () {
   $(this).find('img').stop().animate({
-    'width':'100%',
-    'height':'200px'
-  },300);
+    'width': '100%',
+    'height': '200px'
+  }, 300);
+  $(this).find('.overlay').stop().animate({
+    'height': '0%'
+  }, 300)
+  $(this).find('p').stop().animate({
+    'top': '-100%'
+  }, 300)
   $(this).find('h3').css('color', '#3D4748');
 });
 const swiper = new Swiper('.swiper', {
-      slidesPerView: 3,
-      spaceBetween: 20,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        scrollbar: {
-          el: '.swiper-scrollbar',
-          draggable: true,
-        },
-        mousewheel: true,
-        loop: true,    
+  slidesPerView: 3,
+  spaceBetween: 20,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  scrollbar: {
+    el: '.swiper-scrollbar',
+    draggable: true,
+  },
+  mousewheel: true,
+  loop: true,
 });
-function initMap(){
-  const location = {lat:37.38322999945196,lng: 2.040267971827429};
-  const map = new google.maps.Map(document.querySelector('.map'),{
+function initMap() {
+  const location = { lat: 37.38322999945196, lng: 2.040267971827429 };
+  const map = new google.maps.Map(document.querySelector('.map'), {
     zoom: 12,
     center: location,
   });
