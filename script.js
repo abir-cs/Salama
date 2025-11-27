@@ -129,11 +129,18 @@ srv.forEach(Service => {
     document.body.classList.remove('noscroll');
   })
 });
-
+const map = L.map('map').setView([36.486592451438696, 6.822039510391554], 10);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
+  // attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+L.marker([37.38322999945196, -2.040267971827429]).addTo(map)
+  .bindPopup('Salama Clinic')
+  .openPopup();
 
 const swiper = new Swiper('.swiper', {
   slidesPerView: 3,
-  spaceBetween: 20,
+  spaceBetween: 100,
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
@@ -146,31 +153,31 @@ const swiper = new Swiper('.swiper', {
   loop: true,
   breakpoints: {
     0: {
-      slidesPerView: 1,
-      spaceBetween: 10
+      slidesPerView: 3,
+      spaceBetween: 100
     },
     700: {
-      slidesPerView: 2,
-      spaceBetween: 15
+      slidesPerView: 1,
+      spaceBetween: 30
     },
     1024: {
       slidesPerView: 3,
-      spaceBetween: 20
+      spaceBetween: 60
     }
   }
 });
 
-function initMap() {
-  const location = { lat: 37.38322999945196, lng: 2.040267971827429 };
-  const map = new google.maps.Map(document.querySelector('.map'), {
-    zoom: 12,
-    center: location,
-  });
-  const marker = new google.maps.Marker({
-    position: location,
-    map: map,
-  });
-}
+// function initMap() {
+//   const location = { lat: 37.38322999945196, lng: 2.040267971827429 };
+//   const map = new google.maps.Map(document.querySelector('.map'), {
+//     zoom: 12,
+//     center: location,
+//   });
+//   const marker = new google.maps.Marker({
+//     position: location,
+//     map: map,
+//   });
+// }
 
 // $('.Service').on('click', function () {
 //   c

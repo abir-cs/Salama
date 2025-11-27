@@ -352,13 +352,15 @@ table {
 }
 
 .doctor h3 {
-  margin-top: 2px;
+  margin-top: 1px;
   margin-left: 10px;
+  margin-bottom: 0;
 }
 
 .doctor p {
   font-style: italic;
-  margin-left: 10px;
+  margin-left: 30px;
+  margin-top: 0;
 }
 
 .docimg {
@@ -424,7 +426,7 @@ table {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 100px;
   gap: 20px;
 }
 
@@ -554,7 +556,9 @@ table {
     margin-top: 10px;
   }
 
-  .doctor img {}
+  .doctor {
+    width: 300px !important;
+  }
 }
 
 @media screen and (max-width: 700px) {
@@ -599,5 +603,9 @@ table {
     top: 0;
     right: 0px;
     font-size: 30px;
+  }
+
+  .contacts {
+    width: 400px;
   }
 }
