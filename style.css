@@ -22,6 +22,7 @@ nav {
   box-sizing: border-box;
   justify-content: space-between;
   align-content: center;
+  font-size: 16px;
   padding: 20px;
   background-color: rgb(61, 71, 72);
   z-index: 9999;
@@ -346,7 +347,8 @@ table {
   height: 100px;
   background-color: #9D998E;
   border: 1px solid #3D4748;
-  border-radius: 5px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .doctor h3 {
@@ -410,12 +412,149 @@ table {
   margin-bottom: 20px;
 }
 
+/* --------services------------------------------------------------------- */
+.serv {
+  display: flex;
+  flex-direction: column;
+  padding-top: 90px;
+  align-items: center;
+}
+
+.Services {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+
+.Service {
+  width: 450px;
+  height: 250px;
+  border: 1px solid #3D4748;
+  border-radius: 10px;
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+
+}
+
+.Service img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.Service h3 {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-70%, -50%);
+  /* border: 1px solid #3D4748; */
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.696);
+}
+
+.Service p {
+  position: absolute;
+  color: white;
+  top: 100%;
+  padding-left: 10px;
+}
+
+.overlay {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(to bottom, #3d4748d4, #3d474800);
+  pointer-events: none;
+}
+
+.blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(8px);
+  background-color: #3d4748b7;
+  display: none;
+  z-index: 9999;
+}
+
+.blur button {
+  position: fixed;
+  top: 5px;
+  right: 10px;
+  color: white;
+  background: none;
+  border: none;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.card {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  background: white;
+  display: none;
+  overflow-y: auto;
+  margin-right: 60px;
+  padding: 10px 20px 10px 20px;
+  z-index: 10000;
+}
+
+.noscroll {
+  overflow: hidden;
+}
+
 /* ------------------responsive design --------------------- */
 @media screen and (max-width :1000px) {
   .cntctmap {
     flex-direction: column;
     gap: 0;
   }
+
+  .Service {
+    width: 350px;
+    height: 200px;
+  }
+
+  .firstext {
+    margin: 40px 5px 60px 5px;
+  }
+
+  .abtsection {
+    display: flex;
+    flex-direction: column;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .abtimg {
+    order: -1;
+    width: 450px;
+  }
+
+  .sectext {
+    order: 0;
+    margin-top: 10px;
+  }
+
+  .doctor img {}
 }
 
 @media screen and (max-width: 700px) {
@@ -441,92 +580,24 @@ table {
       width: 180px;
     }
   }
-}
 
-/* --------services------------------------------------------------------- */
-.serv {
-  display: flex;
-  flex-direction: column;
-  padding-top: 90px;
-  align-items: center;
-}
+  .Services {
+    grid-template-columns: repeat(1, 1fr);
 
-.Services {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding-top: 20px;
-  padding-bottom: 20px;
-  gap: 20px;
-}
+  }
 
-/*
- .Service{
-  width: 300px;
-  height: 275px;
-  border: 1px solid #3D4748;
-  border-radius: 10px;
-  overflow: hidden;
-  display: inline-block;
-  position: relative;
-  background-color: #9D998E;
-}
-.Service img{
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-  border-bottom: 1px solid #3D4748;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-.Service h3{
-  padding-left: 10px;
-} */
-.Service {
-  width: 300px;
-  height: 200px;
-  border: 1px solid #3D4748;
-  border-radius: 10px;
-  overflow: hidden;
-  display: inline-block;
-  position: relative;
-}
+  .Service {
+    width: 450px;
+    height: 250px;
+  }
 
-.Service img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
+  .card {
+    width: 400px;
+  }
 
-.Service h3 {
-  position: absolute;
-  top: 60%;
-  left: 40%;
-  transform: translate(-60%, -40%);
-  /* border: 1px solid #3D4748; */
-  border-radius: 5px;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.696);
+  .blur button {
+    top: 0;
+    right: 0px;
+    font-size: 30px;
+  }
 }
-
-.Service p {
-  position: absolute;
-  color: white;
-  top: 100%;
-  padding-left: 10px;
-}
-
-.overlay {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
-  height: 0%;
-  background: linear-gradient(to bottom, #3d4748d4, #3d474800);
-  pointer-events: none;
-}
-
-.blur {}

@@ -84,7 +84,7 @@ $(window).on('scroll', function () {
 $('.Service').hover(function () {
   $(this).find('img').stop().animate({
     'width': '110%',
-    'height': '220px'
+    'height': '120%'
   }, 300);
   $(this).find('.overlay').stop().animate({
     'height': '70%'
@@ -98,7 +98,7 @@ $('.Service').hover(function () {
 }, function () {
   $(this).find('img').stop().animate({
     'width': '100%',
-    'height': '200px'
+    'height': '100%'
   }, 300);
   $(this).find('.overlay').stop().animate({
     'height': '0%'
@@ -108,6 +108,29 @@ $('.Service').hover(function () {
   }, 300)
   $(this).find('h3').css('color', '#3D4748');
 });
+
+const srv = document.querySelectorAll('.Service');
+const blurr = document.querySelector('.blur');
+const exitbtn = document.getElementById('exit');
+console.log('Buttons found:', srv);
+srv.forEach(Service => {
+  Service.addEventListener('click', function () {
+    const id = Service.dataset.target;
+    const cardd = document.getElementById(id);
+    blurr.style.display = 'block';
+    cardd.style.display = 'block';
+    document.body.classList.add('noscroll');
+  });
+  exitbtn.addEventListener('click', function () {
+    const id = Service.dataset.target;
+    const cardd = document.getElementById(id);
+    blurr.style.display = 'none';
+    cardd.style.display = 'none';
+    document.body.classList.remove('noscroll');
+  })
+});
+
+
 const swiper = new Swiper('.swiper', {
   slidesPerView: 3,
   spaceBetween: 20,
@@ -121,7 +144,22 @@ const swiper = new Swiper('.swiper', {
   },
   mousewheel: true,
   loop: true,
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+      spaceBetween: 10
+    },
+    700: {
+      slidesPerView: 2,
+      spaceBetween: 15
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 20
+    }
+  }
 });
+
 function initMap() {
   const location = { lat: 37.38322999945196, lng: 2.040267971827429 };
   const map = new google.maps.Map(document.querySelector('.map'), {
@@ -133,3 +171,9 @@ function initMap() {
     map: map,
   });
 }
+
+// $('.Service').on('click', function () {
+//   c
+//   $('.blur').fadeIn(200);
+//   $('#' + id).fadeIn(200);
+// })

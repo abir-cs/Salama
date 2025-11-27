@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,36 +9,33 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <title>Salama/appointment</title>
 </head>
+
 <body>
     <nav>
         <img src="assets/images/Group 2.png" alt="logo" width="250">
         <div class="links">
-            <a href="index.html">home</a>
-            <a href="about.html">about</a>
-            <a href="services.html">services</a>
-            <a href="appointment.html" style="text-decoration: underline;">appointment</a>
-            <a href="contact.html">contact</a>
+            <a href="index.html">HOME</a>
+            <a href="about.html">ABOUT</a>
+            <a href="services.html">SERVICES</a>
+            <a href="appointment.html" style="text-decoration: underline;">APPOINTMENT</a>
+            <a href="contact.html">CONTACT</a>
         </div>
-    </nav> 
+    </nav>
     <h1>book an appointment !</h1>
     <form action="">
         <label for="Fname">First name</label>
-        <input type="text"  id="Fname">
+        <input type="text" id="Fname">
         <label for="Lname">Last name</label>
         <input type="text" id="Lname">
         <label for="birthday">Birthday</label>
-        <input 
-        type="date" 
-        id="birthday" 
-        name="birthday"
-        >
+        <input type="date" id="birthday" name="birthday">
         <label for="gender">Gender</label>
         <div>
-            <input type="radio" id="m" name="gender" value="male"> 
+            <input type="radio" id="m" name="gender" value="male">
             <label for="m">male</label>
         </div>
         <div>
-            <input type="radio" id="f" name="gender" value="female"> 
+            <input type="radio" id="f" name="gender" value="female">
             <label for="f">female</label>
         </div>
 
@@ -53,20 +51,9 @@
             <option value="special">special consultation</option>
         </select>
         <label for="date">Preferred date</label>
-        <input 
-        type="date" 
-        id="date" 
-        name="date" 
-        >
+        <input type="date" id="date" name="date">
         <label for="appt"> Preferred time</label>
-        <input 
-        type="time" 
-        id="appt" 
-        name="appt"
-        min="09:00"
-        max="17:00"
-        step="900"   
-        >
+        <input type="time" id="appt" name="appt" min="09:00" max="17:00" step="900">
 
         <label for="email">Email</label>
         <input type="email" id="email">
@@ -75,7 +62,8 @@
         <label for="add">Address</label>
         <input type="text" id="add">
         <label for="MH">Medical history</label>
-        <textarea name="" id="MH" placeholder="write here any allergies, chronic diseases or past experiences worth mentioning "></textarea>
+        <textarea name="" id="MH"
+            placeholder="write here any allergies, chronic diseases or past experiences worth mentioning "></textarea>
         <label for="doctor">Select a specific doctor</label>
         <select id="doctor">
             <option value="any">Any would do</option>
@@ -108,9 +96,9 @@
                 <td>racha</td>
             </tr>
             <tr>
-               <td>instagram</td>
-               <td><a href="https://www.instagram.com/6lackrosess/#">6lackrosess</a></td>
-               <td><a href="https://www.instagram.com/duckyduckdog/#">duckyduckdog</a></td>
+                <td>instagram</td>
+                <td><a href="https://www.instagram.com/6lackrosess/#">6lackrosess</a></td>
+                <td><a href="https://www.instagram.com/duckyduckdog/#">duckyduckdog</a></td>
             </tr>
             <tr>
                 <td>Linked in</td>
@@ -125,9 +113,10 @@
 
         </table>
     </div>
-    <script >     
+    <script>
         $("#birthday").max = new Date().toISOString().split("T")[0];
         $("#date").max = new Date().toISOString().split("T")[0];
     </script>
 </body>
+
 </html>
