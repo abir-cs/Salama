@@ -129,14 +129,22 @@ srv.forEach(Service => {
     document.body.classList.remove('noscroll');
   })
 });
-const map = L.map('map').setView([36.486592451438696, 6.822039510391554], 10);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19,
-  // attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map);
-L.marker([37.38322999945196, -2.040267971827429]).addTo(map)
-  .bindPopup('Salama Clinic')
-  .openPopup();
+console.log('mmmmmmmmmmmmmmmmmmmmmm');
+const items = document.querySelectorAll('.accor-item');
+
+items.forEach(item => {
+  const btn = item.querySelector('.icon');
+  const body = item.querySelector('.item-body');
+  btn.addEventListener('click', () => {
+    $(body).slideToggle(400);
+    if (btn.textContent === '+') {
+      btn.textContent = '-';
+    } else {
+      btn.textContent = '+';
+    }
+  });
+});
+
 
 const swiper = new Swiper('.swiper', {
   slidesPerView: 3,
@@ -166,7 +174,17 @@ const swiper = new Swiper('.swiper', {
     }
   }
 });
-
+const mapCon = document.getElementById('map');
+if (mapCon) {
+  var map = L.map('map').setView([36.486592451438696, 6.822039510391554], 10);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    // attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+  L.marker([37.38322999945196, -2.040267971827429]).addTo(map)
+    .bindPopup('Salama Clinic')
+    .openPopup();
+}
 // function initMap() {
 //   const location = { lat: 37.38322999945196, lng: 2.040267971827429 };
 //   const map = new google.maps.Map(document.querySelector('.map'), {
