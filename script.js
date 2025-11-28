@@ -1,4 +1,5 @@
 
+// ------------------------- abir stuff -----------------------------------------
 let exps = [];
 
 const getReviews = async () => {
@@ -22,7 +23,6 @@ window.onload = async () => {
     `);
   });
 };
-
 $(window).on("scroll", function () {
   let opacity = Math.min($(this).scrollTop() / 300, 1);
   $("#nav1").css("background-color", `rgba(61, 71, 72,${opacity})`);
@@ -59,6 +59,8 @@ $("#reviewForm").on("submit", function (e) {
     .catch(err => console.error(err));
 });
 
+//------------------ about page images and text animations ------------------------------------
+
 $(window).on('scroll', function () {
   const windowBottom = $(window).scrollTop() + $(window).height(); // bottom of viewport
 
@@ -81,6 +83,7 @@ $(window).on('scroll', function () {
     }
   });
 });
+//-------------------- the OG services page stuff ------------------------------
 $('.Service').hover(function () {
   $(this).find('img').stop().animate({
     'width': '110%',
@@ -129,7 +132,12 @@ srv.forEach(Service => {
     document.body.classList.remove('noscroll');
   })
 });
-console.log('mmmmmmmmmmmmmmmmmmmmmm');
+$('.Service').on('click', function () {
+  $('.blur').fadeIn(200);
+  $('#' + id).fadeIn(200);
+})
+//------------------------ accordion animations ------------------------------------------
+
 const items = document.querySelectorAll('.accor-item');
 
 items.forEach(item => {
@@ -139,12 +147,19 @@ items.forEach(item => {
     $(body).slideToggle(400);
     if (btn.textContent === '+') {
       btn.textContent = '-';
+      item.style.border = '1.5px solid #36678f';
+      $(item).animate({ backgroundColor: 'rgba(54, 103, 143, 0.18)' }, 400);
+      // item.style.backgroundColor = '#36678f1f';
     } else {
       btn.textContent = '+';
+      item.style.border = '1.5px solid #3D4748';
+      $(item).animate({ backgroundColor: 'rgba(54, 103, 143, 0)' }, 400);
+      // item.style.backgroundColor = 'rgba(54, 103, 143, 0)';
     }
   });
 });
 
+//--------------------- Doctors swiper (about page) ---------------------------------------
 
 const swiper = new Swiper('.swiper', {
   slidesPerView: 3,
@@ -161,30 +176,22 @@ const swiper = new Swiper('.swiper', {
   loop: true,
   breakpoints: {
     0: {
-      slidesPerView: 3,
+      slidesPerView: 1,
       spaceBetween: 100
     },
     700: {
-      slidesPerView: 1,
-      spaceBetween: 30
+      slidesPerView: 2,
+      spaceBetween: 100
     },
     1024: {
       slidesPerView: 3,
-      spaceBetween: 60
+      spaceBetween: 55
     }
   }
 });
-// const mapCon = document.getElementById('map');
-// if (mapCon) {
-//   var map = L.map('map').setView([36.486592451438696, 6.822039510391554], 10);
-//   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//     maxZoom: 19,
-//     // attribution: '&copy; OpenStreetMap contributors'
-//   }).addTo(map);
-//   L.marker([37.38322999945196, -2.040267971827429]).addTo(map)
-//     .bindPopup('Salama Clinic')
-//     .openPopup();
-// }
+
+//--------------- google maps map has dev purposes all over it, ugly (requires billing to remove it) --------------------------
+
 function initMap() {
   const location = { lat: 37.38322999945196, lng: 2.040267971827429 };
   const map = new google.maps.Map(document.querySelector('.map'), {
@@ -197,8 +204,15 @@ function initMap() {
   });
 }
 
-$('.Service').on('click', function () {
-  c
-  $('.blur').fadeIn(200);
-  $('#' + id).fadeIn(200);
-})
+// --------------- map Leaflet map didnt work with swiper -----------------------------
+// const mapCon = document.getElementById('map');
+// if (mapCon) {
+//   var map = L.map('map').setView([36.486592451438696, 6.822039510391554], 10);
+//   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//     maxZoom: 19,
+//     // attribution: '&copy; OpenStreetMap contributors'
+//   }).addTo(map);
+//   L.marker([37.38322999945196, -2.040267971827429]).addTo(map)
+//     .bindPopup('Salama Clinic')
+//     .openPopup();
+// }
