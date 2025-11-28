@@ -416,7 +416,7 @@ table {
 }
 
 /* --------services------------------------------------------------------- */
-.Services {
+/* .Services {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -432,7 +432,7 @@ table {
   align-items: center;
   top: 70%;
   left: 80%;
-  /* transform: translate(-50%, -50%); */
+  /* transform: translate(-50%, -50%); 
   width: 800px;
   height: auto;
   gap: 20;
@@ -483,9 +483,9 @@ table {
 .icon {
   cursor: pointer;
   color: #36678f;
-}
+} */
 
-/* .serv {
+.serv {
   display: flex;
   flex-direction: column;
   padding-top: 90px;
@@ -526,7 +526,7 @@ table {
   top: 60%;
   left: 50%;
   transform: translate(-70%, -50%);
-  /* border: 1px solid #3D4748; 
+  /* border: 1px solid #3D4748;  */
   border-radius: 5px;
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.696);
@@ -535,7 +535,7 @@ table {
 .Service p {
   position: absolute;
   color: white;
-  top: 100%;
+  top: -100%;
   padding-left: 10px;
 }
 
@@ -591,7 +591,7 @@ table {
 
 .noscroll {
   overflow: hidden;
-} */
+}
 
 /* ------------------responsive design --------------------- */
 @media screen and (max-width :1000px) {
@@ -600,10 +600,10 @@ table {
     gap: 0;
   }
 
-  /* .Service {
+  .Service {
     width: 350px;
     height: 200px;
-  } */
+  }
 
   .firstext {
     margin: 40px 5px 60px 5px;
@@ -631,12 +631,12 @@ table {
     width: 300px;
   }
 
-  .devider {
+  /* .devider {
     width: 600px;
     gap: 20;
     border-radius: 10px;
     padding: 10px;
-  }
+  } */
 }
 
 @media screen and (max-width: 700px) {
@@ -663,16 +663,16 @@ table {
     }
   }
 
-  /* .Services {
+  .Services {
     grid-template-columns: repeat(1, 1fr);
     padding-left: 10px;
     padding-right: 10px;
-  } */
+  }
 
-  /* .Service {
+  */ .Service {
     width: 450px;
     height: 250px;
-  } */
+  }
 
   .card {
     width: 400px;
@@ -688,18 +688,11 @@ table {
     width: 340px;
   }
 
-  .devider {
+  /* .devider {
     width: 370px;
     gap: 20;
     border-radius: 10px;
     padding: 10px;
-  }
-
-
-  /* .footer table td,
-  .footer table th {
-    /* white-space: normal; 
-    word-break: break-word;
   } */
 
 }
