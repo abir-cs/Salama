@@ -16,15 +16,26 @@ app.use(express.static(__dirname));
 app.post("/add-review", (req, res) => {
   const filePath = path.join(__dirname, "docs", "experiences.json");
 
-  // read JSON file
   const file = fs.readFileSync(filePath, "utf8");
   const reviews = JSON.parse(file);
 
-  // push new review
   reviews.experiences.push(req.body);
 
-  // write updated file
   fs.writeFileSync(filePath, JSON.stringify(reviews, null, 2));
+
+  res.send({ success: true });
+});
+
+// route to add appointment
+app.post("/add-appointment", (req, res) => {
+  const filePath = path.join(__dirname, "docs", "appointments.json");
+
+  const file = fs.readFileSync(filePath, "utf8");
+  const data = JSON.parse(file);
+
+  data.appointments.push(req.body);
+
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 
   res.send({ success: true });
 });

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="form.css">
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Salama/appointment</title>
 </head>
 
@@ -22,7 +23,7 @@
         </div>
     </nav>
     <h1>book an appointment !</h1>
-    <form action="">
+    <form id="appointment">
         <label for="Fname">First name</label>
         <input type="text" id="Fname">
         <label for="Lname">Last name</label>
@@ -74,6 +75,7 @@
             <option value="abod">dr.abod ahmed</option>
         </select>
         <button>submit</button>
+        <button type="button" class="clear">clear</button>
     </form>
 
     <div class="footer">
@@ -113,10 +115,7 @@
 
         </table>
     </div>
-    <script>
-        $("#birthday").max = new Date().toISOString().split("T")[0];
-        $("#date").max = new Date().toISOString().split("T")[0];
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

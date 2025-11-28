@@ -1,6 +1,4 @@
 
-let exps = [];
-
 const getReviews = async () => {
   const res = await axios.get("/docs/experiences.json");
   return res.data.experiences;
@@ -11,6 +9,7 @@ const getReviews = async () => {
 // });
 
 window.onload = async () => {
+  let exps = [];
   exps = await getReviews();
 
   exps.forEach(e => {
@@ -57,6 +56,42 @@ $("#reviewForm").on("submit", function (e) {
       `);
     })
     .catch(err => console.error(err));
+});
+
+$("#birthday").max = new Date().toISOString().split("T")[0];
+$("#date").max = new Date().toISOString().split("T")[0];
+
+$("#appointment").on("submit", function (e) {
+    e.preventDefault();
+
+    let appointment = {
+        fname: $("#Fname").val(),
+        lname: $("#Lname").val(),
+        birthday: $("#birthday").val(),
+        gender: $("input[name='gender']:checked").val(),
+        service: $("#service").val(),
+        preferredDate: $("#date").val(),
+        preferredTime: $("#appt").val(),
+        email: $("#email").val(),
+        phone: $("#phone").val(),
+        address: $("#add").val(),
+        history: $("#MH").val(),
+        doctor: $("#doctor").val(),
+        createdAt: new Date().toISOString()
+    };
+
+    axios.post("/add-appointment", appointment)
+        .then(() => {
+            alert("Appointment submitted successfully!");
+            $("#appointment")[0].reset();
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Error saving appointment.");
+        });
+});
+$(".clear").click(() => {
+    $("#appointment")[0].reset();
 });
 
 $(window).on('scroll', function () {
@@ -146,34 +181,34 @@ items.forEach(item => {
 });
 
 
-const swiper = new Swiper('.swiper', {
-  slidesPerView: 3,
-  spaceBetween: 100,
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-  scrollbar: {
-    el: '.swiper-scrollbar',
-    draggable: true,
-  },
-  mousewheel: true,
-  loop: true,
-  breakpoints: {
-    0: {
-      slidesPerView: 3,
-      spaceBetween: 100
-    },
-    700: {
-      slidesPerView: 1,
-      spaceBetween: 30
-    },
-    1024: {
-      slidesPerView: 3,
-      spaceBetween: 60
-    }
-  }
-});
+// const swiper = new Swiper('.swiper', {
+//   slidesPerView: 3,
+//   spaceBetween: 100,
+//   navigation: {
+//     nextEl: '.swiper-button-next',
+//     prevEl: '.swiper-button-prev',
+//   },
+//   scrollbar: {
+//     el: '.swiper-scrollbar',
+//     draggable: true,
+//   },
+//   mousewheel: true,
+//   loop: true,
+//   breakpoints: {
+//     0: {
+//       slidesPerView: 3,
+//       spaceBetween: 100
+//     },
+//     700: {
+//       slidesPerView: 1,
+//       spaceBetween: 30
+//     },
+//     1024: {
+//       slidesPerView: 3,
+//       spaceBetween: 60
+//     }
+//   }
+// });
 // const mapCon = document.getElementById('map');
 // if (mapCon) {
 //   var map = L.map('map').setView([36.486592451438696, 6.822039510391554], 10);

@@ -1,0 +1,19 @@
+{
+  "appointments": [
+    {
+      "fname": "abir",
+      "lname": "blehadef",
+      "birthday": "2005-02-18",
+      "gender": "female",
+      "service": "labtest",
+      "preferredDate": "2025-11-30",
+      "preferredTime": "10:30",
+      "email": "abirbelhadef2@gmail.com",
+      "phone": "0561032196",
+      "address": "fefaew",
+      "history": "none",
+      "doctor": "any",
+      "createdAt": "2025-11-28T21:19:29.802Z"
+    }
+  ]
+}
