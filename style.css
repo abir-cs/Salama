@@ -712,7 +712,7 @@ table {
       margin: 20px 0;
   }
   .footer{
-    padding: 0;
+    padding: 15px;
   }
   
   .item-body{
@@ -760,10 +760,6 @@ table {
       margin-left: 0px;
       margin-right: 0px;
     }
-  }
-
-  .footer {
-    width: 120%;
   }
 
 }
