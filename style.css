@@ -88,15 +88,17 @@ a:hover {
   padding-bottom: 20px;
   border: 2px solid #3D4748;
   border-radius: 5px;
-  p{
+
+  p {
     margin: 10px;
   }
+
   span {
     font-weight: bold;
   }
 }
 
-.mission{
+.mission {
   background-color: #3d4748b9;
   width: fit-content;
   color: white;
@@ -111,14 +113,15 @@ a:hover {
 .doc-experience {
   padding: 15px;
 }
-.doc-experience{
-  p{
+
+.doc-experience {
+  p {
     text-align: center;
     padding: 10px;
     background-color: #3d474844;
     border-bottom: 1px solid #3D4748;
     border-right: 1px solid #3D4748;
-    
+
   }
 }
 
@@ -481,7 +484,7 @@ table {
   font-style: italic;
   padding: 15px;
   margin-top: 0;
- 
+
   .service {
     width: 450px;
     height: 250px;
@@ -493,6 +496,7 @@ table {
     position: relative;
     cursor: pointer;
   }
+
   .service img {
     width: 100%;
     height: 100%;
@@ -502,6 +506,7 @@ table {
     transition: transform 0.3s ease;
   }
 }
+
 .item-body h4,
 .item-body p {
   margin-top: 10px;
@@ -748,11 +753,17 @@ table {
     padding: 10px;
   }
 
+  .item-body {
+    .service {
+      width: 300px;
+      height: 200px;
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+  }
 
-  /* .footer table td,
-  .footer table th {
-    /* white-space: normal; 
-    word-break: break-word;
-  } */
+  .footer {
+    width: 120%;
+  }
 
 }
