@@ -44,6 +44,7 @@ nav {
 }
 
 .footer {
+  width: 100%;
   background-color: #3D4748;
   padding: 50px;
 }
@@ -449,7 +450,7 @@ table {
   width: 800px;
   height: auto;
   gap: 20;
-  border: 1px solid #3D4748;
+  border: 1.5px solid #3D4748;
   border-radius: 10px;
   padding: 10px;
   margin-top: 20px;
@@ -458,10 +459,11 @@ table {
 .accor-item {
   width: 90%;
   display: flex;
-  border: 1px solid #3D4748;
+  border: 1.5px solid #3D4748;
   margin: 10px;
   border-radius: 10px;
   flex-direction: column;
+  background-color: none;
 }
 
 .item-header {
@@ -513,6 +515,7 @@ table {
 
 .icon {
   cursor: pointer;
+  color: #36678f;
 }
 
 /* .serv {
@@ -642,13 +645,14 @@ table {
   .abtsection {
     display: flex;
     flex-direction: column;
-    padding-right: 10px;
-    padding-left: 10px;
+    align-items: center;
+    padding-right: 30px;
+    padding-left: 30px;
   }
 
   .abtimg {
     order: -1;
-    width: 450px;
+    width: 400px;
   }
 
   .sectext {
@@ -657,7 +661,14 @@ table {
   }
 
   .doctor {
-    width: 300px !important;
+    width: 300px;
+  }
+
+  .devider {
+    width: 600px;
+    gap: 20;
+    border-radius: 10px;
+    padding: 10px;
   }
 }
 
@@ -707,6 +718,21 @@ table {
   }
 
   .contacts {
-    width: 400px;
+    width: 340px;
   }
+
+  .devider {
+    width: 370px;
+    gap: 20;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+
+  /* .footer table td,
+  .footer table th {
+    /* white-space: normal; 
+    word-break: break-word;
+  } */
+
 }
