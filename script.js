@@ -1,15 +1,10 @@
 
-// ------------------------- abir stuff -----------------------------------------
 let exps = [];
 
 const getReviews = async () => {
   const res = await axios.get("/docs/experiences.json");
   return res.data.experiences;
 };
-// $(window).on("scroll", function () {
-//   let opacity = Math.min($(this).scrollTop() / 300, 1);
-//   $("#nav1").css("background-color", `rgba(61, 71, 72,${opacity})`);
-// });
 
 window.onload = async () => {
   let exps = [];
@@ -49,7 +44,6 @@ $("#reviewForm").on("submit", function (e) {
       alert("Review added!");
       $(".form1").addClass("hide");
 
-      // immediately show it without reload:
       $(".reviews").append(`
         <div class="review">
           <h3>${newReview.name} ${newReview.Lname}</h3>
@@ -99,22 +93,20 @@ $(".clear").click(() => {
 //------------------ about page images and text animations ------------------------------------
 
 $(window).on('scroll', function () {
-  const windowBottom = $(window).scrollTop() + $(window).height(); // bottom of viewport
+  const windowBottom = $(window).scrollTop() + $(window).height();
 
   $('.fade-slide').each(function () {
-    const imgTop = $(this).offset().top; // distance from top of page
+    const imgTop = $(this).offset().top;
 
-    // Check if image is entering the viewport
     if (windowBottom > imgTop + 50 && !$(this).hasClass('animated')) {
-      $(this).addClass('animated'); // mark image so it animates only once
+      $(this).addClass('animated'); 
 
-      // Animate opacity and position simultaneously
       $(this).animate({
-        opacity: 1, // fade in
-        top: 0      // slide up to original position
-      }, 1000);     // duration: 1 second
+        opacity: 1,
+        top: 0 
+      }, 1000);     
       $(this).parent().find('.fade-text').delay(150).animate({
-        opacity: 1, // fade in
+        opacity: 1, 
       }, 600);
 
     }
@@ -198,45 +190,6 @@ items.forEach(item => {
 
 //--------------------- Doctors swiper (about page) ---------------------------------------
 
-// const swiper = new Swiper('.swiper', {
-//   slidesPerView: 3,
-//   spaceBetween: 100,
-//   navigation: {
-//     nextEl: '.swiper-button-next',
-//     prevEl: '.swiper-button-prev',
-//   },
-//   scrollbar: {
-//     el: '.swiper-scrollbar',
-//     draggable: true,
-//   },
-//   mousewheel: true,
-//   loop: true,
-//   breakpoints: {
-//     0: {
-//       slidesPerView: 3,
-//       spaceBetween: 100
-//     },
-//     700: {
-//       slidesPerView: 1,
-//       spaceBetween: 30
-//     },
-//     1024: {
-//       slidesPerView: 3,
-//       spaceBetween: 60
-//     }
-//   }
-// });
-// const mapCon = document.getElementById('map');
-// if (mapCon) {
-//   var map = L.map('map').setView([36.486592451438696, 6.822039510391554], 10);
-//   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//     maxZoom: 19,
-//     // attribution: '&copy; OpenStreetMap contributors'
-//   }).addTo(map);
-//   L.marker([37.38322999945196, -2.040267971827429]).addTo(map)
-//     .bindPopup('Salama Clinic')
-//     .openPopup();
-// }
 const swiper = new Swiper('.swiper', {
   slidesPerView: 3,
   spaceBetween: 100,
@@ -279,16 +232,3 @@ function initMap() {
     map: map,
   });
 }
-
-// --------------- map Leaflet map didnt work with swiper -----------------------------
-// const mapCon = document.getElementById('map');
-// if (mapCon) {
-//   var map = L.map('map').setView([36.486592451438696, 6.822039510391554], 10);
-//   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//     maxZoom: 19,
-//     // attribution: '&copy; OpenStreetMap contributors'
-//   }).addTo(map);
-//   L.marker([37.38322999945196, -2.040267971827429]).addTo(map)
-//     .bindPopup('Salama Clinic')
-//     .openPopup();
-// }
