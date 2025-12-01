@@ -64,36 +64,36 @@ $("#birthday").max = new Date().toISOString().split("T")[0];
 $("#date").max = new Date().toISOString().split("T")[0];
 
 $("#appointment").on("submit", function (e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    let appointment = {
-        fname: $("#Fname").val(),
-        lname: $("#Lname").val(),
-        birthday: $("#birthday").val(),
-        gender: $("input[name='gender']:checked").val(),
-        service: $("#service").val(),
-        preferredDate: $("#date").val(),
-        preferredTime: $("#appt").val(),
-        email: $("#email").val(),
-        phone: $("#phone").val(),
-        address: $("#add").val(),
-        history: $("#MH").val(),
-        doctor: $("#doctor").val(),
-        createdAt: new Date().toISOString()
-    };
+  let appointment = {
+    fname: $("#Fname").val(),
+    lname: $("#Lname").val(),
+    birthday: $("#birthday").val(),
+    gender: $("input[name='gender']:checked").val(),
+    service: $("#service").val(),
+    preferredDate: $("#date").val(),
+    preferredTime: $("#appt").val(),
+    email: $("#email").val(),
+    phone: $("#phone").val(),
+    address: $("#add").val(),
+    history: $("#MH").val(),
+    doctor: $("#doctor").val(),
+    createdAt: new Date().toISOString()
+  };
 
-    axios.post("/add-appointment", appointment)
-        .then(() => {
-            alert("Appointment submitted successfully!");
-            $("#appointment")[0].reset();
-        })
-        .catch(err => {
-            console.error(err);
-            alert("Error saving appointment.");
-        });
+  axios.post("/add-appointment", appointment)
+    .then(() => {
+      alert("Appointment submitted successfully!");
+      $("#appointment")[0].reset();
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Error saving appointment.");
+    });
 });
 $(".clear").click(() => {
-    $("#appointment")[0].reset();
+  $("#appointment")[0].reset();
 });
 
 //------------------ about page images and text animations ------------------------------------
@@ -261,34 +261,23 @@ const swiper = new Swiper('.swiper', {
     },
     1024: {
       slidesPerView: 3,
-      spaceBetween: 55
+      spaceBetween: 70
     }
   }
 });
 
 //--------------- google maps map has dev purposes all over it, ugly (requires billing to remove it) --------------------------
 
-function initMap() {
-  const location = { lat: 37.38322999945196, lng: 2.040267971827429 };
-  const map = new google.maps.Map(document.querySelector('.map'), {
-    zoom: 12,
-    center: location,
-  });
-  const marker = new google.maps.Marker({
-    position: location,
-    map: map,
-  });
-}
+// function initMap() {
+//   const location = { lat: 37.38322999945196, lng: 2.040267971827429 };
+//   const map = new google.maps.Map(document.querySelector('.map'), {
+//     zoom: 12,
+//     center: location,
+//   });
+//   const marker = new google.maps.Marker({
+//     position: location,
+//     map: map,
+//   });
+// }
 
 // --------------- map Leaflet map didnt work with swiper -----------------------------
-// const mapCon = document.getElementById('map');
-// if (mapCon) {
-//   var map = L.map('map').setView([36.486592451438696, 6.822039510391554], 10);
-//   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//     maxZoom: 19,
-//     // attribution: '&copy; OpenStreetMap contributors'
-//   }).addTo(map);
-//   L.marker([37.38322999945196, -2.040267971827429]).addTo(map)
-//     .bindPopup('Salama Clinic')
-//     .openPopup();
-// }
