@@ -335,7 +335,7 @@ table {
 
 .sectext {
   margin-top: 100px;
-  width: 500px;
+  /* width: 500px; */
 }
 
 /* img animation */
@@ -351,8 +351,7 @@ table {
 .doctor {
   display: flex;
   flex-direction: column;
-  width: 50px;
-  height: 100px;
+  height: auto;
   background-color: #9D998E;
   border: 1px solid #3D4748;
   border-radius: 10px;
@@ -542,9 +541,6 @@ table {
     margin-top: 10px;
   }
 
-  .doctor {
-    width: 300px;
-  }
 
   .devider {
     width: 600px;
@@ -634,6 +630,12 @@ table {
       margin-left: 0px;
       margin-right: 0px;
     }
+  }
+
+  .swiper {
+    width: 310px;
+    height: 430px;
+    padding: 10px 50px 20px 50px !important;
   }
 
 }
