@@ -3,21 +3,39 @@ nav{
     background-color: #3D4748;
     top:0;
 }
-h1{
+h2{
     margin-top: 120px;
     text-align: center;
 }
 body{
-    background-image: linear-gradient(to right, #f3fcf1, white);
+    background-image: linear-gradient(to right, #66747a1e, white);
+}
+.doodle1{
+    position: fixed;
+    height: 90%;
+    left: 0;
+    top:100px;
+}
+.doodle2{
+    position: fixed;
+    height: 45%;
+    right: 0;
+    bottom: 0;
+}
+.doodle3{
+    position: fixed;
+    height: 10%;
+    right: 40px;
+    top: 100px;
+    transform: rotate(180deg);
 }
 form{
-    background-image: linear-gradient(to left,#f3fcf1, white);
-    background-color: white;
+    background-image: linear-gradient(to left,#66747a08, white);
     border: 1px solid #9D998E;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    max-width:  800px;
+    max-width:  780px;
     margin: 20px auto;
     padding: 20px;
     input,label{
@@ -25,8 +43,19 @@ form{
     }
     input,textarea,select{
         text-align: center;
+        background-color: #ffffff80;
     }
     *{
         margin-bottom: 10px;
+    }
+}
+@media screen and (max-width :1000px) {
+    form{
+        max-width: 600px;
+    }
+}
+@media screen and (max-width :700px) {
+    form{
+        max-width: 400px;
     }
 }

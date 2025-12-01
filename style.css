@@ -26,18 +26,10 @@ nav {
   padding: 20px;
   background-color: rgb(61, 71, 72);
   z-index: 9999;
-  /* transition: background-color 0.3s ease; */
 }
 
 #nav1 {
-  position: fixed;
   top: 0;
-  display: flex;
-  width: 100%;
-  box-sizing: border-box;
-  justify-content: space-between;
-  align-content: center;
-  padding: 20px;
   z-index: 0;
   background-color: rgba(61, 71, 72, 0);
   transition: background-color 0.3s ease;
@@ -150,6 +142,10 @@ a:hover {
   border-radius: 10px;
   transition: transform 0.5s ease;
   transform-origin: center;
+}
+
+.service:hover img {
+  transform: scale(1.2);
 }
 
 .service p {
@@ -288,11 +284,6 @@ table {
     padding: 10px;
     border: 1px solid white;
   }
-}
-
-/* -------animations---------------------- */
-.service:hover img {
-  transform: scale(1.2);
 }
 
 /* about page --------------------------------------------------- */
@@ -522,125 +513,12 @@ table {
   color: #36678f;
 }
 
-/* .serv {
-  display: flex;
-  flex-direction: column;
-  padding-top: 90px;
-  align-items: center;
-}
-
-.Services {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  padding-top: 20px;
-  padding-bottom: 100px;
-  gap: 20px;
-}
-
-.Service {
-  width: 450px;
-  height: 250px;
-  border: 1px solid #3D4748;
-  border-radius: 10px;
-  overflow: hidden;
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-
-}
-
-.Service img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.Service h3 {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-70%, -50%);
-  /* border: 1px solid #3D4748; 
-  border-radius: 5px;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.696);
-}
-
-.Service p {
-  position: absolute;
-  color: white;
-  top: 100%;
-  padding-left: 10px;
-}
-
-.overlay {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
-  height: 0%;
-  background: linear-gradient(to bottom, #3d4748d4, #3d474800);
-  pointer-events: none;
-}
-
-.blur {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(8px);
-  background-color: #3d4748b7;
-  display: none;
-  z-index: 9999;
-}
-
-.blur button {
-  position: fixed;
-  top: 5px;
-  right: 10px;
-  color: white;
-  background: none;
-  border: none;
-  font-size: 40px;
-  cursor: pointer;
-}
-
-.card {
-  position: fixed;
-  width: 500px;
-  height: 500px;
-  top: 50%;
-  left: 50%;
-  border-radius: 10px;
-  align-items: center;
-  transform: translate(-50%, -50%);
-  background: white;
-  display: none;
-  overflow-y: auto;
-  margin-right: 60px;
-  padding: 10px 20px 10px 20px;
-  z-index: 10000;
-}
-
-.noscroll {
-  overflow: hidden;
-} */
-
 /* ------------------responsive design --------------------- */
 @media screen and (max-width :1000px) {
   .cntctmap {
     flex-direction: column;
     gap: 0;
   }
-
-  /* .Service {
-    width: 350px;
-    height: 200px;
-  } */
 
   .firstext {
     margin: 40px 5px 60px 5px;
@@ -674,6 +552,7 @@ table {
     border-radius: 10px;
     padding: 10px;
   }
+
 }
 
 @media screen and (max-width: 700px) {
@@ -682,6 +561,7 @@ table {
     font-size: 15px;
   }
 
+  h1,
   h2 {
     font-size: 20px;
   }
@@ -711,12 +591,12 @@ table {
 
   .appointment {
     width: 100%;
-    height: 300px;
+    height: 400px;
     margin: 20px 0;
   }
 
   .footer {
-    padding: 0;
+    padding: 15px;
   }
 
   .item-body {
@@ -725,17 +605,6 @@ table {
       margin: 0;
     }
   }
-
-  /* .Services {
-    grid-template-columns: repeat(1, 1fr);
-    padding-left: 10px;
-    padding-right: 10px;
-  } */
-
-  /* .Service {
-    width: 450px;
-    height: 250px;
-  } */
 
   .card {
     width: 400px;
@@ -765,10 +634,6 @@ table {
       margin-left: 0px;
       margin-right: 0px;
     }
-  }
-
-  .footer {
-    width: 120%;
   }
 
 }
