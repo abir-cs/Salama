@@ -178,12 +178,10 @@ items.forEach(item => {
       btn.textContent = '-';
       item.style.border = '1.5px solid #36678f';
       $(item).animate({ backgroundColor: 'rgba(54, 103, 143, 0.18)' }, 400);
-      // item.style.backgroundColor = '#36678f1f';
     } else {
       btn.textContent = '+';
       item.style.border = '1.5px solid #3D4748';
       $(item).animate({ backgroundColor: 'rgba(54, 103, 143, 0)' }, 400);
-      // item.style.backgroundColor = 'rgba(54, 103, 143, 0)';
     }
   });
 });
@@ -219,18 +217,3 @@ const swiper = new Swiper('.swiper', {
   }
 });
 
-//--------------- google maps map has dev purposes all over it, ugly (requires billing to remove it) --------------------------
-
-// function initMap() {
-//   const location = { lat: 37.38322999945196, lng: 2.040267971827429 };
-//   const map = new google.maps.Map(document.querySelector('.map'), {
-//     zoom: 12,
-//     center: location,
-//   });
-//   const marker = new google.maps.Marker({
-//     position: location,
-//     map: map,
-//   });
-// }
-
-// --------------- map Leaflet map didnt work with swiper -----------------------------
