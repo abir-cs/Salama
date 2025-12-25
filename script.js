@@ -23,36 +23,30 @@ $(window).on("scroll", function () {
   let opacity = Math.min($(this).scrollTop() / 300, 1);
   $("#nav1").css("background-color", `rgba(61, 71, 72,${opacity})`);
 });
-$(".add").click(() => {
-  $(".form1").removeClass("hide");
-});
-$(".close").click(() => {
-  $("#reviewForm")[0].reset();
-  $(".form1").addClass("hide");
-});
-$("#reviewForm").on("submit", function (e) {
-  e.preventDefault();
 
-  const newReview = {
-    name: $("#name").val(),
-    Lname: $("#Lname").val(),
-    exp: $("#experience").val(),
-  };
+// $("#reviewForm").on("submit", function (e) {
+//   e.preventDefault();
 
-  axios.post("/add-review", newReview)
-    .then(() => {
-      alert("Review added!");
-      $(".form1").addClass("hide");
+//   const newReview = {
+//     name: $("#name").val(),
+//     Lname: $("#Lname").val(),
+//     exp: $("#experience").val(),
+//   };
 
-      $(".reviews").append(`
-        <div class="review">
-          <h3>${newReview.name} ${newReview.Lname}</h3>
-          <p>${newReview.exp}</p>
-        </div>
-      `);
-    })
-    .catch(err => console.error(err));
-});
+//   axios.post("/add-review", newReview)
+//     .then(() => {
+//       alert("Review added!");
+//       $(".form1").addClass("hide");
+
+//       $(".reviews").append(`
+//         <div class="review">
+//           <h3>${newReview.name} ${newReview.Lname}</h3>
+//           <p>${newReview.exp}</p>
+//         </div>
+//       `);
+//     })
+//     .catch(err => console.error(err));
+// });
 
 $("#birthday").max = new Date().toISOString().split("T")[0];
 $("#date").max = new Date().toISOString().split("T")[0];
