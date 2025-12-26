@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Salama/home</title>
 </head>
 
@@ -36,6 +35,8 @@
             ':exp' => $experience,
 
         ]);
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit;
     }
     ?>
     <nav id="nav1">

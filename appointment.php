@@ -12,6 +12,51 @@
 </head>
 
 <body>
+    <?php
+    $success = false;
+    require_once __DIR__ . "/connection.php";
+    try {
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+            $fname = $_POST['first_name'];
+            $lname = $_POST['last_name'];
+            $bday = $_POST['birthdate'];
+            $gender = $_POST['gender'];
+            $rs = $_POST['requested_service'];
+            $date = $_POST['preferred_date'];
+            $time = $_POST['preferred_time'];
+            $email = $_POST['email'];
+            $phone = $_POST['phone'];
+            $address = $_POST['address'];
+            $ah = $_POST['allergies_history'];
+            $sd = $_POST['selected_doctor'];
+            $sqlQuery = "INSERT INTO appointments
+                                (first_name , last_name , birthdate , gender , requested_service , preferred_date , preferred_time , email , phone , address , allergies_history , selected_doctor )
+                                VALUES (:first_name ,:last_name ,:birthdate ,:gender ,:requested_service ,:preferred_date ,:preferred_time ,:email ,:phone ,:address ,:allergies_history ,:selected_doctor )";
+
+            $stmt = $mysqlClient->prepare($sqlQuery);
+            $stmt->execute([
+                ':first_name' => $fname,
+                ':last_name' => $lname,
+                ':birthdate' => $bday,
+                ':gender' => $gender,
+                ':requested_service' => $rs,
+                ':preferred_date' => $date,
+                ':preferred_time' => $time,
+                ':email' => $email,
+                ':phone' => $phone,
+                ':address' => $address,
+                ':allergies_history' => $ah,
+                ':selected_doctor' => $sd,
+
+            ]);
+            $success = true;
+        }
+    } catch (Exception $e) {
+        echo "" . $e->getMessage() . "";
+    }
+    ?>
     <nav>
         <img src="assets/images/Group 2.png" alt="logo" width="250">
         <div class="links">
@@ -25,8 +70,14 @@
     <img src="assets/doodles/doodle1.svg" alt="flower" class="doodle1">
     <img src="assets/doodles/doodle2.svg" alt="flower" class="doodle2">
     <img src="assets/doodles/doodle3.svg" alt="flower" class="doodle3">
+
     <h2>book an appointment !</h2>
-    <form id="appointment">
+    <?php if ($success): ?>
+        <div class="success">
+            Your appointment request has been submitted successfully.
+        </div>
+    <?php endif ?>
+    <form method="post" id="appointment">
         <label for="Fname">First name</label>
         <input type="text" id="Fname" name="first_name">
         <label for="Lname">Last name</label>
@@ -120,7 +171,7 @@
 
         </table>
     </div>
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
 </body>
 
 </html>

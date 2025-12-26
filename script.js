@@ -1,85 +1,13 @@
 
-let exps = [];
-
-const getReviews = async () => {
-  const res = await axios.get("/docs/experiences.json");
-  return res.data.experiences;
-};
-
-window.onload = async () => {
-  let exps = [];
-  exps = await getReviews();
-
-  exps.forEach(e => {
-    $(".reviews").append(`
-      <div class="review">
-        <h3>${e.name} ${e.Lname}</h3>
-        <p>${e.exp}</p>
-      </div>
-    `);
-  });
-};
 $(window).on("scroll", function () {
   let opacity = Math.min($(this).scrollTop() / 300, 1);
   $("#nav1").css("background-color", `rgba(61, 71, 72,${opacity})`);
 });
 
-// $("#reviewForm").on("submit", function (e) {
-//   e.preventDefault();
-
-//   const newReview = {
-//     name: $("#name").val(),
-//     Lname: $("#Lname").val(),
-//     exp: $("#experience").val(),
-//   };
-
-//   axios.post("/add-review", newReview)
-//     .then(() => {
-//       alert("Review added!");
-//       $(".form1").addClass("hide");
-
-//       $(".reviews").append(`
-//         <div class="review">
-//           <h3>${newReview.name} ${newReview.Lname}</h3>
-//           <p>${newReview.exp}</p>
-//         </div>
-//       `);
-//     })
-//     .catch(err => console.error(err));
-// });
 
 $("#birthday").max = new Date().toISOString().split("T")[0];
 $("#date").max = new Date().toISOString().split("T")[0];
 
-$("#appointment").on("submit", function (e) {
-  e.preventDefault();
-
-  let appointment = {
-    fname: $("#Fname").val(),
-    lname: $("#Lname").val(),
-    birthday: $("#birthday").val(),
-    gender: $("input[name='gender']:checked").val(),
-    service: $("#service").val(),
-    preferredDate: $("#date").val(),
-    preferredTime: $("#appt").val(),
-    email: $("#email").val(),
-    phone: $("#phone").val(),
-    address: $("#add").val(),
-    history: $("#MH").val(),
-    doctor: $("#doctor").val(),
-    createdAt: new Date().toISOString()
-  };
-
-  axios.post("/add-appointment", appointment)
-    .then(() => {
-      alert("Appointment submitted successfully!");
-      $("#appointment")[0].reset();
-    })
-    .catch(err => {
-      console.error(err);
-      alert("Error saving appointment.");
-    });
-});
 $(".clear").click(() => {
   $("#appointment")[0].reset();
 });
