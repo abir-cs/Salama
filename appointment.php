@@ -14,47 +14,71 @@
 <body>
     <?php
     $success = false;
+    $errors = [];
     require_once __DIR__ . "/connection.php";
+    function clean($value)
+    {
+        return htmlspecialchars(trim($value), ENT_QUOTES, 'UTF-8');
+    }
     try {
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-            $fname = $_POST['first_name'];
-            $lname = $_POST['last_name'];
+            $fname = clean($_POST['first_name']);
+            $lname = clean($_POST['last_name']);
             $bday = $_POST['birthdate'];
             $gender = $_POST['gender'];
-            $rs = $_POST['requested_service'];
+            $rs = clean($_POST['requested_service']);
             $date = $_POST['preferred_date'];
             $time = $_POST['preferred_time'];
-            $email = $_POST['email'];
-            $phone = $_POST['phone'];
-            $address = $_POST['address'];
-            $ah = $_POST['allergies_history'];
-            $sd = $_POST['selected_doctor'];
-            $sqlQuery = "INSERT INTO appointments
-                                (first_name , last_name , birthdate , gender , requested_service , preferred_date , preferred_time , email , phone , address , allergies_history , selected_doctor )
-                                VALUES (:first_name ,:last_name ,:birthdate ,:gender ,:requested_service ,:preferred_date ,:preferred_time ,:email ,:phone ,:address ,:allergies_history ,:selected_doctor )";
+            $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+            $phone = preg_replace('/\D/', '', $_POST['phone']);
+            $address = clean($_POST['address']);
+            $ah = clean($_POST['allergies_history'] ?? '');
+            $sd = clean($_POST['selected_doctor']);
 
-            $stmt = $mysqlClient->prepare($sqlQuery);
-            $stmt->execute([
-                ':first_name' => $fname,
-                ':last_name' => $lname,
-                ':birthdate' => $bday,
-                ':gender' => $gender,
-                ':requested_service' => $rs,
-                ':preferred_date' => $date,
-                ':preferred_time' => $time,
-                ':email' => $email,
-                ':phone' => $phone,
-                ':address' => $address,
-                ':allergies_history' => $ah,
-                ':selected_doctor' => $sd,
+            if (!$email) {
+                $errors[] = "Invalid email format.";
+            }
 
-            ]);
-            $success = true;
+            if (!preg_match('/^0\d{9}$/', $phone)) {
+                $errors[] = "Phone number must be exactly 10 digits and start with 0.";
+            }
+
+            if (!in_array($gender, ['m', 'f'])) {
+                $errors[] = "Invalid gender selection.";
+            }
+
+            if ($date && strtotime($date) < strtotime(date('Y-m-d'))) {
+                $errors[] = "Preferred date cannot be in the past.";
+            }
+            if (empty($errors)) {
+                $sqlQuery = "INSERT INTO appointments
+                                    (first_name , last_name , birthdate , gender , requested_service , preferred_date , preferred_time , email , phone , address , allergies_history , selected_doctor )
+                                    VALUES (:first_name ,:last_name ,:birthdate ,:gender ,:requested_service ,:preferred_date ,:preferred_time ,:email ,:phone ,:address ,:allergies_history ,:selected_doctor )";
+
+                $stmt = $mysqlClient->prepare($sqlQuery);
+                $stmt->execute([
+                    ':first_name' => $fname,
+                    ':last_name' => $lname,
+                    ':birthdate' => $bday,
+                    ':gender' => $gender,
+                    ':requested_service' => $rs,
+                    ':preferred_date' => $date,
+                    ':preferred_time' => $time,
+                    ':email' => $email,
+                    ':phone' => $phone,
+                    ':address' => $address,
+                    ':allergies_history' => $ah,
+                    ':selected_doctor' => $sd,
+
+                ]);
+                header("Location: appointment.php?success=1");
+                exit;
+            }
         }
     } catch (Exception $e) {
-        echo "" . $e->getMessage() . "";
+        $errors[] = "Something went wrong with request. Please try again.";
     }
     ?>
     <nav>
@@ -72,18 +96,28 @@
     <img src="assets/doodles/doodle3.svg" alt="flower" class="doodle3">
 
     <h2>book an appointment !</h2>
-    <?php if ($success): ?>
+    <?php if (isset($_GET['success'])): ?>
         <div class="success">
             Your appointment request has been submitted successfully.
         </div>
-    <?php endif ?>
+    <?php endif; ?>
+    <?php if (!empty($errors)): ?>
+        <div class="error">
+            <h3>Error : appointment has not been submitted !</h3>
+            <ul>
+                <?php foreach ($errors as $error): ?>
+                    <li><?= $error ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
     <form method="post" id="appointment">
         <label for="Fname">First name</label>
-        <input type="text" id="Fname" name="first_name">
+        <input type="text" id="Fname" name="first_name" required>
         <label for="Lname">Last name</label>
-        <input type="text" id="Lname" name="last_name">
+        <input type="text" id="Lname" name="last_name" required>
         <label for="birthday">Birthday</label>
-        <input type="date" id="birthday" name="birthdate">
+        <input type="date" id="birthday" name="birthdate" required>
         <label for="gender">Gender</label>
         <div>
             <input type="radio" id="m" name="gender" value="m">
@@ -106,16 +140,16 @@
             <option value="special">special consultation</option>
         </select>
         <label for="date">Preferred date</label>
-        <input type="date" id="date" name="preferred_date">
+        <input type="date" id="date" name="preferred_date" required>
         <label for="appt"> Preferred time</label>
-        <input type="time" id="appt" name="preferred_time" min="08:00" max="19:00" step="900">
+        <input type="time" id="appt" name="preferred_time" min="08:00" max="19:00" step="900" required>
 
         <label for="email">Email</label>
-        <input type="email" id="email" name="email">
+        <input type="email" id="email" name="email" required>
         <label for="phone">Phone number</label>
-        <input type="number" id="phone" name="phone">
+        <input type="number" id="phone" name="phone" required>
         <label for="add">Address</label>
-        <input type="text" id="add" name="address">
+        <input type="text" id="add" name="address" required>
         <label for="MH">Medical history</label>
         <textarea name="allergies_history" id="MH"
             placeholder="write here any allergies, chronic diseases or past experiences worth mentioning "></textarea>

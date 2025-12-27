@@ -47,6 +47,7 @@
             <a href="services.html">SERVICES</a>
             <a href="appointment.php">APPOINTMENT</a>
             <a href="contact.html">CONTACT</a>
+            <a href="login.php">LOGIN</a>
         </div>
     </nav>
     <div class="home">

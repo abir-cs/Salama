@@ -179,7 +179,8 @@ button {
 }
 
 .add {
-  border-radius: 20px;
+  border-radius: 15px;
+  padding: 10px;
   background-color: #3D4748;
 
 }
@@ -511,7 +512,45 @@ table {
   cursor: pointer;
   color: #36678f;
 }
+/* ---------------------------login-------------------- */
 
+body.background {
+  background-image: url("../assets/images/rooms/lab.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+.coat{
+  height: 100%;
+  min-height: 100vh;
+  background-color: rgba(255, 255, 255, 0.3); 
+   h1{
+    margin: 0;
+    padding: 50px;
+  }
+}
+.logincard{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 30px 30px 30px;
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #3D4748;
+  input{
+    border-radius: 10px;
+  }
+  a{
+    color: #3D4748;
+    text-decoration: underline;
+    font-size: 15px;
+    margin-top: 20px;
+  }
+}
 /* ------------------responsive design --------------------- */
 @media screen and (max-width :1000px) {
   .cntctmap {
