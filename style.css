@@ -273,7 +273,21 @@ select {
     border-radius: 5px;
   }
 }
-
+.success{
+    text-align: center;
+    padding: 10px;
+    margin : 20px;
+    background-color: #3d474844;
+    border-bottom: 1px solid #3D4748;
+    border-right: 1px solid #3D4748;
+}
+.error{
+    padding: 10px 20px;
+    margin : 20px 50px;
+    background-color: #9d575744;
+    border-bottom: 1px solid #3D4748;
+    border-right: 1px solid #3D4748;
+}
 table {
   margin: auto;
   color: white;
