@@ -27,7 +27,7 @@
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $username;
 
-                header("Location: dashboard.php");
+                header("Location: src/dashboard.php");
                 exit;
             } else {
                 $error = "Invalid password";

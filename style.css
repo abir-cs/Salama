@@ -273,21 +273,24 @@ select {
     border-radius: 5px;
   }
 }
-.success{
-    text-align: center;
-    padding: 10px;
-    margin : 20px;
-    background-color: #3d474844;
-    border-bottom: 1px solid #3D4748;
-    border-right: 1px solid #3D4748;
+
+.success {
+  text-align: center;
+  padding: 10px;
+  margin: 20px;
+  background-color: #3d474844;
+  border-bottom: 1px solid #3D4748;
+  border-right: 1px solid #3D4748;
 }
-.error{
-    padding: 10px 20px;
-    margin : 20px 50px;
-    background-color: #9d575744;
-    border-bottom: 1px solid #3D4748;
-    border-right: 1px solid #3D4748;
+
+.error {
+  padding: 10px 20px;
+  margin: 20px 50px;
+  background-color: #9d575744;
+  border-bottom: 1px solid #3D4748;
+  border-right: 1px solid #3D4748;
 }
+
 table {
   margin: auto;
   color: white;
@@ -526,25 +529,29 @@ table {
   cursor: pointer;
   color: #36678f;
 }
+
 /* ---------------------------login-------------------- */
 
 body.background {
-  background-image: url("../assets/images/rooms/lab.jpg");
+  background-image: url("assets/images/rooms/lab.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   min-height: 100vh;
 }
-.coat{
+
+.coat {
   height: 100%;
   min-height: 100vh;
-  background-color: rgba(255, 255, 255, 0.3); 
-   h1{
+  background-color: rgba(255, 255, 255, 0.3);
+
+  h1 {
     margin: 0;
     padding: 50px;
   }
 }
-.logincard{
+
+.logincard {
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -555,16 +562,21 @@ body.background {
   width: 400px;
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid #3D4748;
-  input{
+
+  input {
     border-radius: 10px;
   }
-  a{
+
+  a {
     color: #3D4748;
     text-decoration: underline;
     font-size: 15px;
     margin-top: 20px;
   }
 }
+
+
+
 /* ------------------responsive design --------------------- */
 @media screen and (max-width :1000px) {
   .cntctmap {
@@ -696,4 +708,37 @@ body.background {
     height: auto;
   }
 
+}
+
+/*================ deatails ======================================*/
+.details {
+  display: flex;
+  flex-direction: column;
+  background-image: url("assets/images/rooms/emer3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  min-height: 100vh;
+  padding: 10px;
+
+  h1 {
+    color: #3D4748;
+    background-color: rgba(240, 248, 255, 0.514);
+    border-radius: 10px;
+    padding: 5px;
+    border: 2px solid #3D4748;
+  }
+}
+
+.detailscard {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 20px;
+  border: 2px solid #3D4748;
+  border-radius: 10px;
+  background-color: rgba(240, 248, 255, 0.514);
+  font-weight: bold;
 }

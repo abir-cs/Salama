@@ -178,7 +178,7 @@
     </div>
 
     <script>
-        $(window).on("scroll", function () {
+        $(window).on("scroll", function() {
             let opacity = Math.min($(this).scrollTop() / 300, 1);
             $("#nav1").css("background-color", `rgba(61, 71, 72,${opacity})`);
         });
