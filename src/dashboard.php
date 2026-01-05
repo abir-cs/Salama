@@ -2,6 +2,13 @@
 <html lang="en">
 
 <head>
+  <?php
+  require_once __DIR__ . "/../connection.php";
+  if (!isset($_GET['name'])) {
+    header("Location: ../login.php");
+    exit;
+  }
+  ?>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -69,7 +76,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="manage_appointments.php">
+          <a class="nav-link" href="manage_appointments.php?name=<?= $_GET['name'] ?>">
             <i class="icon-paper menu-icon"></i>
             <span class="menu-title">Appointments</span>
           </a>
@@ -84,12 +91,8 @@
             <div class="row">
               <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                 <h3 class="font-weight-bold">Welcome
-                  <?php require_once __DIR__ . "/../connection.php";
-                  $name = $_GET['name'] ?? null;
-                  if ($name != null) {
-                    echo $name;
-                  }
-                  ?>!</h3>
+                  <?= $_GET['name'] ?>
+                  !</h3>
                 <h6 class="font-weight-normal mb-0">All services operational! You have <span
                     class="text-primary">3 unread alerts!</span></h6>
               </div>

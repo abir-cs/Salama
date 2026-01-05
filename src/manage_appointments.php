@@ -21,6 +21,10 @@
 <body>
     <?php
     require_once __DIR__ . "/../connection.php";
+    if (!isset($_GET['name'])) {
+        header("Location: /../login.php");
+        exit;
+    }
     if (isset($_POST['id'])) {
         $id = $_POST['id'];
 
@@ -34,7 +38,7 @@
     ?>
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-            <a class="navbar-brand brand-logo me-5" href="dashboard.php"><img src="assets/images/Salama.svg" class="me-2"
+            <a class="navbar-brand brand-logo me-5" href="dashboard.php?name=<?= $_GET['name'] ?>"><img src="assets/images/Salama.svg" class="me-2"
                     alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -79,13 +83,13 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard.php">
+                    <a class="nav-link" href="dashboard.php?name=<?= $_GET['name'] ?>">
                         <i class="icon-grid menu-icon"></i>
                         <span class="menu-title">Dashboard</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="manage_appointments.php">
+                    <a class="nav-link" href="manage_appointments.php?name=<?= $_GET['name'] ?>">
                         <i class="icon-paper menu-icon"></i>
                         <span class="menu-title">Appointments</span>
                     </a>
