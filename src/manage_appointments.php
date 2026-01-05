@@ -179,9 +179,12 @@
                      <i class='fa-solid fa-trash'></i>
                     </button>
                     </form>
-                    <button class='btn btn-sm' title='Download medical file'>
+                 
+                    <a href='download.php?file=" . $appointment['medical_file'] . "' class='btn btn-sm' title='Download medical file'>
                         <i class='fa-solid fa-download'></i>
-                    </button>
+                    </a>
+
+
                     </td>
                     </tr>";
                     }

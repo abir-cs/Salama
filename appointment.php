@@ -28,11 +28,6 @@
             $stmt1 = $mysqlClient->prepare("SELECT * FROM appointments WHERE id = :id ");
             $stmt1->execute([':id' => $id]);
             $appointment = $stmt1->fetch();
-            if ($id && !$medicalFileName) {
-                $old = $mysqlClient->prepare("SELECT medical_file FROM appointments WHERE id = :id");
-                $old->execute([':id' => $id]);
-                $medicalFileName = $old->fetchColumn();
-            }
         }
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -68,8 +63,6 @@
             if ($date && strtotime($date) < strtotime(date('Y-m-d'))) {
                 $errors[] = "Preferred date cannot be in the past.";
             }
-
-
             if ($mf && $mf['error'] === UPLOAD_ERR_OK) {
 
                 $ext = strtolower(pathinfo($mf['name'], PATHINFO_EXTENSION));
@@ -78,7 +71,6 @@
                 if (!in_array($ext, $allowed)) {
                     $errors[] = "Invalid file format. Only PDF, JPG, PNG allowed.";
                 } else {
-                    // unique name to avoid overwriting
                     $medicalFileName = uniqid('mf_', true) . '.' . $ext;
                     move_uploaded_file($mf['tmp_name'], $uploadDir . $medicalFileName);
                 }
@@ -125,6 +117,7 @@
                         ':address' => $address,
                         ':allergies_history' => $ah,
                         ':selected_doctor' => $sd,
+                        ':medical_file' => $medicalFileName,
                         ':id' => $id,
                     ]);
                     header("Location: appointment.php?&updated=1");
