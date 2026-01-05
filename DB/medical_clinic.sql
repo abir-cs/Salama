@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2025 at 03:22 PM
+-- Generation Time: Dec 27, 2025 at 03:07 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -67,13 +67,6 @@ CREATE TABLE `authentication` (
   `password` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `authentication`
---
-
-INSERT INTO `authentication` (`id`, `username`, `password`) VALUES
-(1, 'abiru', '$2y$10$uc9HllMuybd3PdN.yc1WSeB');
-
 -- --------------------------------------------------------
 
 --
@@ -135,7 +128,7 @@ ALTER TABLE `appointments`
 -- AUTO_INCREMENT for table `authentication`
 --
 ALTER TABLE `authentication`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `reviews`

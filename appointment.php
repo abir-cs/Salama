@@ -139,6 +139,9 @@
             <a href="services.html">SERVICES</a>
             <a href="appointment.php" style="text-decoration: underline;">APPOINTMENT</a>
             <a href="contact.html">CONTACT</a>
+            <a href="login.php">LOGIN</a>
+            <a href="login.php">LOGIN</a>
+
         </div>
     </nav>
     <img src="assets/doodles/doodle1.svg" alt="flower" class="doodle1">
