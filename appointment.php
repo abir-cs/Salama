@@ -131,7 +131,7 @@
         $errors[] = "Something went wrong with request. Please try again.";
     }
     ?>
-    <!-- <nav>
+    <nav>
         <img src="assets/images/Group 2.png" alt="logo" width="250">
         <div class="links">
             <a href="index.php">HOME</a>
@@ -140,7 +140,7 @@
             <a href="appointment.php" style="text-decoration: underline;">APPOINTMENT</a>
             <a href="contact.html">CONTACT</a>
         </div>
-    </nav> -->
+    </nav>
     <img src="assets/doodles/doodle1.svg" alt="flower" class="doodle1">
     <img src="assets/doodles/doodle2.svg" alt="flower" class="doodle2">
     <img src="assets/doodles/doodle3.svg" alt="flower" class="doodle3">
