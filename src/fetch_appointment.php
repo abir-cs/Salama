@@ -12,7 +12,7 @@
     require_once __DIR__ . "/../connection.php";
 
     $search = $_GET['search'] ?? '';
-    $sort   = $_GET['sort'] ?? '';
+    $sort = $_GET['sort'] ?? '';
 
     $sql = "SELECT * FROM appointments WHERE 1=1";
     $params = [];
@@ -60,6 +60,11 @@
             <a href='../appointment.php?id={$appointment['id']}' class='btn btn-sm'>
                 <i class='fa-solid fa-pen'></i>
             </a>
+               
+            <a href='download.php?file=" . $appointment['medical_file'] . "' class='btn btn-sm' title='Download medical file'>
+                <i class='fa-solid fa-download'></i>
+            </a>
+
             <form method='POST' style='display:inline;'>
                 <input type='hidden' name='id' value='{$appointment['id']}'>
                 <button class='btn btn-sm'>
