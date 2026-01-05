@@ -33,12 +33,6 @@
                 $error = "Invalid password";
             }
         }
-
-        if (!$error) {
-
-            header("Location: dashboard.php");
-            exit;
-        }
     }
     ?>
     <div class="coat">

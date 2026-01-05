@@ -41,7 +41,7 @@
                 ':username' => $username,
                 ':password' => $hashedPassword,
             ]);
-            header("Location: src/dashboard.php?name=" . $username);
+            header("Location: src/src/dashboard.php?name=" . $username);
             exit;
         }
     }
