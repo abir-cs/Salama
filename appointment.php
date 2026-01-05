@@ -15,6 +15,7 @@
     <?php
     $success = false;
     $errors = [];
+    $uploadDir = __DIR__ . "/uploads/";
     require_once __DIR__ . "/connection.php";
     function clean($value)
     {
@@ -27,6 +28,11 @@
             $stmt1 = $mysqlClient->prepare("SELECT * FROM appointments WHERE id = :id ");
             $stmt1->execute([':id' => $id]);
             $appointment = $stmt1->fetch();
+            if ($id && !$medicalFileName) {
+                $old = $mysqlClient->prepare("SELECT medical_file FROM appointments WHERE id = :id");
+                $old->execute([':id' => $id]);
+                $medicalFileName = $old->fetchColumn();
+            }
         }
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -43,6 +49,9 @@
             $address = clean($_POST['address']);
             $ah = clean($_POST['allergies_history'] ?? '');
             $sd = clean($_POST['selected_doctor']);
+            $mf = $_FILES['medical_file'] ?? null;
+            $medicalFileName = null;
+
 
             if (!$email) {
                 $errors[] = "Invalid email format.";
@@ -59,11 +68,26 @@
             if ($date && strtotime($date) < strtotime(date('Y-m-d'))) {
                 $errors[] = "Preferred date cannot be in the past.";
             }
+
+
+            if ($mf && $mf['error'] === UPLOAD_ERR_OK) {
+
+                $ext = strtolower(pathinfo($mf['name'], PATHINFO_EXTENSION));
+                $allowed = ['pdf', 'jpg', 'png'];
+
+                if (!in_array($ext, $allowed)) {
+                    $errors[] = "Invalid file format. Only PDF, JPG, PNG allowed.";
+                } else {
+                    // unique name to avoid overwriting
+                    $medicalFileName = uniqid('mf_', true) . '.' . $ext;
+                    move_uploaded_file($mf['tmp_name'], $uploadDir . $medicalFileName);
+                }
+            }
             if (empty($errors)) {
                 if (empty($id)) {
                     $sqlQuery = "INSERT INTO appointments
-                                    (first_name , last_name , birthdate , gender , requested_service , preferred_date , preferred_time , email , phone , address , allergies_history , selected_doctor )
-                                    VALUES (:first_name ,:last_name ,:birthdate ,:gender ,:requested_service ,:preferred_date ,:preferred_time ,:email ,:phone ,:address ,:allergies_history ,:selected_doctor )";
+                                    (first_name , last_name , birthdate , gender , requested_service , preferred_date , preferred_time , email , phone , address , allergies_history , selected_doctor,medical_file )
+                                    VALUES (:first_name ,:last_name ,:birthdate ,:gender ,:requested_service ,:preferred_date ,:preferred_time ,:email ,:phone ,:address ,:allergies_history ,:selected_doctor ,:medical_file)";
 
                     $stmt = $mysqlClient->prepare($sqlQuery);
                     $stmt->execute([
@@ -79,13 +103,14 @@
                         ':address' => $address,
                         ':allergies_history' => $ah,
                         ':selected_doctor' => $sd,
-
+                        ':medical_file' => $medicalFileName,
                     ]);
                     header("Location: appointment.php?success=1");
                 } else {
+
                     $stmt = $mysqlClient->prepare("UPDATE appointments SET first_name = :first_name, last_name = :last_name, birthdate = :birthdate, gender = :gender,
                         requested_service = :requested_service, preferred_date = :preferred_date, preferred_time = :preferred_time , email = :email, phone = :phone, address = :address, allergies_history = :allergies_history,
-                        selected_doctor = :selected_doctor Where id = :id");
+                        selected_doctor = :selected_doctor,medical_file = :medical_file Where id = :id");
 
                     $stmt->execute([
                         ':first_name' => $fname,
@@ -113,7 +138,7 @@
         $errors[] = "Something went wrong with request. Please try again.";
     }
     ?>
-    <nav>
+    <!-- <nav>
         <img src="assets/images/Group 2.png" alt="logo" width="250">
         <div class="links">
             <a href="index.php">HOME</a>
@@ -122,7 +147,7 @@
             <a href="appointment.php" style="text-decoration: underline;">APPOINTMENT</a>
             <a href="contact.html">CONTACT</a>
         </div>
-    </nav>
+    </nav> -->
     <img src="assets/doodles/doodle1.svg" alt="flower" class="doodle1">
     <img src="assets/doodles/doodle2.svg" alt="flower" class="doodle2">
     <img src="assets/doodles/doodle3.svg" alt="flower" class="doodle3">
@@ -135,7 +160,8 @@
     <?php endif; ?>
     <?php if (isset($_GET['updated'])): ?>
         <div class="success">
-            Your appointment request has been updated successfully. <a style="color: #2f5f85;" href="src/manage_appointments.php">table</a>
+            Your appointment request has been updated successfully. <a style="color: #2f5f85;"
+                href="src/manage_appointments.php">table</a>
         </div>
     <?php endif; ?>
     <?php if (!empty($errors)): ?>
@@ -148,7 +174,7 @@
             </ul>
         </div>
     <?php endif; ?>
-    <form method="post" id="appointment">
+    <form method="post" enctype="multipart/form-data" id="appointment">
         <input type="hidden" name="id" value="<?= $_GET['id'] ?? '' ?>">
         <label for="Fname">First name</label>
         <input type="text" id="Fname" name="first_name" value="<?= $appointment['first_name'] ?? '' ?>" required>
@@ -169,19 +195,26 @@
 
         <label for="service"></label>
         <select name="requested_service" id="service">
-            <option value="general" <?= ($appointment['requested_service'] ?? '') ===  "general" ? 'selected' : '' ?>>general consultation</option>
-            <option value="pediatric" <?= ($appointment['requested_service'] ?? '') ===  "pediatric" ? 'selected' : '' ?>>pediatric consultation</option>
-            <option value="dental" <?= ($appointment['requested_service'] ?? '') ===  "dental" ? 'selected' : '' ?>>dental checkup</option>
-            <option value="physiotherapy" <?= ($appointment['requested_service'] ?? '') ===  "physiotherapy" ? 'selected' : '' ?>>physiotherapy session</option>
-            <option value="vaccination" <?= ($appointment['requested_service'] ?? '') ===  "vaccination" ? 'selected' : '' ?>>vaccination</option>
-            <option value="labtest" <?= ($appointment['requested_service'] ?? '') ===  "labtest" ? 'selected' : '' ?>>lab test</option>
-            <option value="followup" <?= ($appointment['requested_service'] ?? '') ===  "followup" ? 'selected' : '' ?>>follow-up appointment</option>
-            <option value="special" <?= ($appointment['requested_service'] ?? '') ===  "special" ? 'selected' : '' ?>>special consultation</option>
+            <option value="general" <?= ($appointment['requested_service'] ?? '') === "general" ? 'selected' : '' ?>>
+                general consultation</option>
+            <option value="pediatric" <?= ($appointment['requested_service'] ?? '') === "pediatric" ? 'selected' : '' ?>>
+                pediatric consultation</option>
+            <option value="dental" <?= ($appointment['requested_service'] ?? '') === "dental" ? 'selected' : '' ?>>dental
+                checkup</option>
+            <option value="physiotherapy" <?= ($appointment['requested_service'] ?? '') === "physiotherapy" ? 'selected' : '' ?>>physiotherapy session</option>
+            <option value="vaccination" <?= ($appointment['requested_service'] ?? '') === "vaccination" ? 'selected' : '' ?>>vaccination</option>
+            <option value="labtest" <?= ($appointment['requested_service'] ?? '') === "labtest" ? 'selected' : '' ?>>lab
+                test</option>
+            <option value="followup" <?= ($appointment['requested_service'] ?? '') === "followup" ? 'selected' : '' ?>>
+                follow-up appointment</option>
+            <option value="special" <?= ($appointment['requested_service'] ?? '') === "special" ? 'selected' : '' ?>>
+                special consultation</option>
         </select>
         <label for="date">Preferred date</label>
         <input type="date" id="date" name="preferred_date" value="<?= $appointment['preferred_date'] ?? '' ?>" required>
         <label for="appt"> Preferred time</label>
-        <input type="time" id="appt" name="preferred_time" min="08:00" max="19:00" step="900" value="<?= $appointment['preferred_time'] ?? '' ?>" required>
+        <input type="time" id="appt" name="preferred_time" min="08:00" max="19:00" step="900"
+            value="<?= $appointment['preferred_time'] ?? '' ?>" required>
 
         <label for="email">Email</label>
         <input type="email" id="email" name="email" value="<?= $appointment['email'] ?? '' ?>" required>
@@ -194,14 +227,23 @@
             placeholder="write here any allergies, chronic diseases or past experiences worth mentioning "><?= $appointment['allergies_history'] ?? '' ?></textarea>
         <label for="doctor">Select a specific doctor</label>
         <select id="doctor" name="selected_doctor">
-            <option value="any" <?= ($appointment['selected_doctor'] ?? '') === "any" ? 'selected' : '' ?>>Any would do</option>
-            <option value="house" <?= ($appointment['selected_doctor'] ?? '') === "house" ? 'selected' : '' ?>>dr.house</option>
-            <option value="belfoul" <?= ($appointment['selected_doctor'] ?? '') === "belfoul" ? 'selected' : '' ?>>dr.belfoul meryem</option>
-            <option value="meli" <?= ($appointment['selected_doctor'] ?? '') === "meli" ? 'selected' : '' ?>>dr.meli</option>
-            <option value="melohi" <?= ($appointment['selected_doctor'] ?? '') === "melohi" ? 'selected' : '' ?>>dr.melohi salime</option>
-            <option value="abod" <?= ($appointment['selected_doctor'] ?? '') === "abod" ? 'selected' : '' ?>>dr.abod ahmed</option>
-            <option value="kadri" <?= ($appointment['selected_doctor'] ?? '') === "kadri" ? 'selected' : '' ?>>dr.kadri</option>
+            <option value="any" <?= ($appointment['selected_doctor'] ?? '') === "any" ? 'selected' : '' ?>>Any would do
+            </option>
+            <option value="house" <?= ($appointment['selected_doctor'] ?? '') === "house" ? 'selected' : '' ?>>dr.house
+            </option>
+            <option value="belfoul" <?= ($appointment['selected_doctor'] ?? '') === "belfoul" ? 'selected' : '' ?>>
+                dr.belfoul meryem</option>
+            <option value="meli" <?= ($appointment['selected_doctor'] ?? '') === "meli" ? 'selected' : '' ?>>dr.meli
+            </option>
+            <option value="melohi" <?= ($appointment['selected_doctor'] ?? '') === "melohi" ? 'selected' : '' ?>>dr.melohi
+                salime</option>
+            <option value="abod" <?= ($appointment['selected_doctor'] ?? '') === "abod" ? 'selected' : '' ?>>dr.abod ahmed
+            </option>
+            <option value="kadri" <?= ($appointment['selected_doctor'] ?? '') === "kadri" ? 'selected' : '' ?>>dr.kadri
+            </option>
         </select>
+        <label for="mf">upload a medical file if needed</label>
+        <input type="file" name="medical_file" accept=".pdf,.jpg,.png">
         <div class="buttons">
             <button><?= isset($_GET['id']) ? 'update' : 'submit' ?></button>
             <button type="button" class="clear">clear</button>
