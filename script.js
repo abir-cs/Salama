@@ -5,12 +5,6 @@ $(window).on("scroll", function () {
 });
 
 
-$("#birthday").max = new Date().toISOString().split("T")[0];
-$("#date").max = new Date().toISOString().split("T")[0];
-
-$(".clear").click(() => {
-  $("#appointment")[0].reset();
-});
 
 //------------------ about page images and text animations ------------------------------------
 

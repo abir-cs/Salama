@@ -140,8 +140,6 @@
             <a href="appointment.php" style="text-decoration: underline;">APPOINTMENT</a>
             <a href="contact.html">CONTACT</a>
             <a href="login.php">LOGIN</a>
-            <a href="login.php">LOGIN</a>
-
         </div>
     </nav>
     <img src="assets/doodles/doodle1.svg" alt="flower" class="doodle1">
@@ -283,6 +281,14 @@
 
         </table>
     </div>
+    <script>
+        $("#birthday").max = new Date().toISOString().split("T")[0];
+        $("#date").max = new Date().toISOString().split("T")[0];
+
+        $(".clear").click(() => {
+            $("#appointment")[0].reset();
+        });
+    </script>
     <!-- <script src="script.js"></script> -->
 </body>
 
